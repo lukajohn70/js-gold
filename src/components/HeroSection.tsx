@@ -2,7 +2,11 @@ import { scrollTo } from '../utils'
 import NetworkVisual from './NetworkVisual'
 import { attachRipple } from '../App'
 
-export default function HeroSection() {
+interface HeroSectionProps {
+  onOpenServices?: () => void
+}
+
+export default function HeroSection({ onOpenServices }: HeroSectionProps) {
   return (
     <div className="section-fade" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', paddingTop: 68, position: 'relative', overflow: 'hidden' }}>
 
@@ -17,7 +21,7 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Floating ambient blobs — JLM-inspired */}
+      {/* Floating ambient blobs */}
       <div
         className="blob-gold"
         style={{
@@ -50,78 +54,79 @@ export default function HeroSection() {
         {/* Left: Copy */}
         <div>
           <div className="section-label" style={{ marginBottom: 20 }}>
-            ◆ &nbsp; Integrated Technology &amp; Media Group · Nigeria
+            ◆ &nbsp; Technology &amp; Multimedia Agency · Quality You Can Trust
           </div>
 
           <h1 style={{
-            fontSize: 'clamp(2rem, 3.5vw, 3.1rem)', fontWeight: 800, lineHeight: 1.1,
+            fontSize: 'clamp(2.1rem, 3.8vw, 3.4rem)', fontWeight: 800, lineHeight: 1.12,
             letterSpacing: '-0.025em', color: 'var(--text-primary)', margin: '0 0 20px',
           }}>
-            Engineering Digital Ecosystems for{' '}
+            We Build.{' '}
             <span style={{
               background: 'linear-gradient(135deg, #D4AF37 0%, #E8CC6A 60%, #D4AF37 100%)',
               WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
             }}>
-              Institutional Scale
+              We Broadcast.
             </span>
+            <br />
+            We Create.
           </h1>
 
-          {/* Concise — JLM-style single punch line */}
-          <p style={{ fontSize: '0.97rem', lineHeight: 1.75, color: 'var(--text-muted)', margin: '0 0 28px', maxWidth: 440 }}>
-            Five divisions. One team. Software, networks, broadcast, creative media, and consultancy — under one operational framework.
+          <p style={{ fontSize: '1rem', lineHeight: 1.75, color: 'var(--text-muted)', margin: '0 0 24px', maxWidth: 480 }}>
+            JS-GOLD Digital World is a full-stack technology and creative powerhouse. From robust enterprise software &amp; network engineering to high-definition broadcast production and captivating multimedia, we deliver end-to-end digital excellence.
           </p>
 
           {/* Badge */}
           <div style={{
             display: 'inline-flex', alignItems: 'center', gap: 8,
-            padding: '8px 16px', borderRadius: 6, marginBottom: 36,
+            padding: '8px 16px', borderRadius: 6, marginBottom: 32,
             background: 'var(--gold-glow)', border: '1px solid var(--border-gold)',
           }}>
             <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--gold)', flexShrink: 0 }} />
             <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.06em', color: 'var(--gold)' }}>
-              End-to-end technology. One accountable team.
+              Quality You Can Trust — 3 Core Divisions Under One Roof
             </span>
           </div>
 
           <div style={{ display: 'flex', gap: 14, alignItems: 'center', flexWrap: 'wrap' }}>
             <button
-              onClick={(e) => { attachRipple(e); scrollTo('services') }}
+              onClick={(e) => { attachRipple(e); scrollTo('contact') }}
               className="gold-glow-btn ripple"
               style={{ padding: '13px 28px', borderRadius: 9, fontSize: '0.85rem', border: 'none', cursor: 'pointer', fontFamily: 'inherit' }}
             >
-              Explore Our Capabilities
+              Start a Project
             </button>
 
             <button
-              onClick={() => scrollTo('company-profile')}
-              title="View Company Profile"
+              onClick={() => {
+                if (onOpenServices) onOpenServices()
+                else scrollTo('about')
+              }}
+              title="Explore Our Services"
               className="glass-btn ripple"
               style={{
                 display: 'flex', alignItems: 'center', gap: 8,
-                padding: '11px 18px', borderRadius: 9,
-                fontSize: '0.78rem', cursor: 'pointer', fontFamily: 'inherit',
+                padding: '12px 22px', borderRadius: 9,
+                fontSize: '0.82rem', cursor: 'pointer', fontFamily: 'inherit',
               }}
             >
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path d="M7 1v8M4 6.5L7 9.5 10 6.5M1.5 11h11" stroke="var(--gold)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              Company Dossier
+              Explore Our Services →
             </button>
           </div>
 
           {/* Stats */}
-          <div style={{ display: 'flex', gap: 24, marginTop: 48, paddingTop: 24, borderTop: '1px solid var(--border-subtle)', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: 28, marginTop: 44, paddingTop: 24, borderTop: '1px solid var(--border-subtle)', flexWrap: 'wrap' }}>
             {[
-              { value: '5', label: 'Divisions' },
-              { value: '200+', label: 'Deployments' },
-              { value: '99.9%', label: 'Uptime SLA' },
-              { value: '10+', label: 'Industries' },
+              { value: '3', label: 'Core Divisions' },
+              { value: '100+', label: 'Delivered Projects' },
+              { value: '99.9%', label: 'Network Reliability' },
+              { value: '5+ Years', label: 'Industry Excellence' },
             ].map((stat) => (
               <div key={stat.label}>
-                <div style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--gold)', letterSpacing: '-0.02em', lineHeight: 1 }}>
+                <div style={{ fontSize: '1.45rem', fontWeight: 800, color: 'var(--gold)', letterSpacing: '-0.02em', lineHeight: 1 }}>
                   {stat.value}
                 </div>
-                <div style={{ fontSize: '0.68rem', color: 'var(--text-dim)', marginTop: 4, letterSpacing: '0.04em' }}>
+                <div style={{ fontSize: '0.7rem', color: 'var(--text-dim)', marginTop: 5, letterSpacing: '0.03em' }}>
                   {stat.label}
                 </div>
               </div>
@@ -129,7 +134,7 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Right: Visual — hidden on mobile */}
+        {/* Right: Visual */}
         <div className="hidden lg:flex" style={{ justifyContent: 'center', alignItems: 'center' }}>
           <NetworkVisual />
         </div>

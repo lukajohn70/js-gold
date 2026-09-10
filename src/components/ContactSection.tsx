@@ -1,27 +1,27 @@
 import { useState, type FormEvent } from 'react'
 
 const partnershipWorkflow = [
-  { id: 'consultation', label: 'Preliminary Technical Consultation', desc: '30-min discovery call with a JS-GOLD division lead' },
-  { id: 'assessment', label: 'Infrastructure Assessment', desc: 'On-site or remote audit of your facility and systems' },
-  { id: 'architecture', label: 'Solution Architecture', desc: 'Formal scope document with approved technical specification' },
-  { id: 'implementation', label: 'Implementation', desc: 'Phased build with UAT sign-off gates at each milestone' },
-  { id: 'sla', label: 'Service Level Agreement', desc: 'Bespoke SLA with defined KPIs and response SLOs' },
-  { id: 'support', label: 'Long-Term Support', desc: 'Quarterly reviews, operator training, and system optimisation' },
+  { id: 'consultation', label: 'Initial Discovery & Scoping', desc: 'A focused discussion with our engineering or creative leads to understand your exact objectives.' },
+  { id: 'assessment', label: 'Technical Assessment & Audit', desc: 'On-site or remote analysis of your systems, network infrastructure, or production requirements.' },
+  { id: 'architecture', label: 'Proposal & Architecture Blueprint', desc: 'Clear deliverables, architecture diagrams, milestone schedule, and transparent pricing.' },
+  { id: 'implementation', label: 'Precision Implementation', desc: 'Agile sprints, quality assurance testing, and regular progress demonstrations.' },
+  { id: 'handover', label: 'Handover & Knowledge Transfer', desc: 'Comprehensive staff training, configuration documentation, and handover sign-off.' },
+  { id: 'support', label: 'Ongoing SLA & Continuous Support', desc: 'Dedicated technical assistance, system health checks, and responsive maintenance.' },
 ]
 
 const projectScopes = [
-  'Software Engineering — Web / Mobile / ERP',
-  'Network Infrastructure — Campus / Enterprise / Hotspot',
-  'Broadcast Engineering — Live Streaming / AV Production',
-  'Creative Media — Video / Photography / Design',
-  'Consultancy & Capacity Development',
-  'Multi-Division Integrated Engagement',
+  'Software & Networking — Custom Web/Mobile & MikroTik Infrastructure',
+  'Broadcast & AV Systems — Live Streaming, Multicam & Audio',
+  'Creative Media — Video, Photography, Motion & UI/UX',
+  'Multi-Division Integrated Project',
+  'Free Technical Infrastructure Assessment',
+  'General Inquiry & Consultation',
 ]
 
 export default function ContactSection() {
-  const [checked, setChecked] = useState<Set<string>>(new Set())
-  const [activeTab, setActiveTab] = useState<'brief' | 'consult' | 'partnership'>('brief')
-  const [form, setForm] = useState({ name: '', email: '', scope: '', brief: '' })
+  const [checked, setChecked] = useState<Set<string>>(new Set(['consultation', 'assessment']))
+  const [activeTab, setActiveTab] = useState<'brief' | 'consult' | 'assessment'>('brief')
+  const [form, setForm] = useState({ name: '', email: '', phone: '', scope: '', brief: '' })
   const [submitted, setSubmitted] = useState(false)
 
   const toggle = (id: string) => {
@@ -33,14 +33,14 @@ export default function ContactSection() {
   const handleSubmit = (e: FormEvent) => { e.preventDefault(); setSubmitted(true) }
 
   return (
-    <div className="px-4 sm:px-6 md:px-8 py-20" style={{ borderTop: '1px solid var(--border-subtle)', maxWidth: 1280, margin: '0 auto' }}>
+    <div id="contact" className="px-4 sm:px-6 md:px-8 py-20" style={{ borderTop: '1px solid var(--border-subtle)', maxWidth: 1280, margin: '0 auto' }}>
       <div style={{ textAlign: 'center', marginBottom: 60 }}>
-        <div className="section-label" style={{ marginBottom: 14 }}>◆ &nbsp; Strategic Partnership Portal</div>
-        <h2 style={{ fontSize: 'clamp(1.6rem, 2.5vw, 2.3rem)', fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--text-primary)', margin: '0 0 12px' }}>
-          Initiate a Partnership
+        <div className="section-label" style={{ marginBottom: 14 }}>◆ &nbsp; Connect With Our Team</div>
+        <h2 style={{ fontSize: 'clamp(1.8rem, 2.6vw, 2.5rem)', fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--text-primary)', margin: '0 0 12px' }}>
+          Get In Touch
         </h2>
-        <p style={{ fontSize: '0.86rem', color: 'var(--text-muted)', margin: 0 }}>
-          Enterprise engagements · Institutional contracts · Technical consultancy · Capacity programmes
+        <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', margin: 0, maxWidth: 580, marginLeft: 'auto', marginRight: 'auto' }}>
+          Ready to engineer a solution, produce a broadcast, or document your vision? Tell us about your project or request a free technical assessment.
         </p>
       </div>
 
@@ -50,13 +50,13 @@ export default function ContactSection() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
 
           {/* Direct channels */}
-          <div style={{ padding: '26px', borderRadius: 12, background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)', backdropFilter: 'blur(25px)' }}>
-            <div className="section-label" style={{ marginBottom: 18 }}>Direct Channels</div>
+          <div style={{ padding: '26px', borderRadius: 14, background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)', backdropFilter: 'blur(25px)' }}>
+            <div className="section-label" style={{ marginBottom: 18 }}>Direct Contact Channels</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
 
               {[
-                { icon: 'phone', href: 'tel:+2348150917741', label: 'PHONE', value: '+234 815 091 7741', accent: 'var(--gold)', bg: 'var(--gold-glow)', border: 'var(--border-gold)' },
-                { icon: 'email', href: 'mailto:jsgold.dw@gmail.com', label: 'EMAIL', value: 'jsgold.dw@gmail.com', accent: '#50C8FF', bg: 'rgba(80,200,255,0.05)', border: 'rgba(80,200,255,0.2)' },
+                { icon: 'phone', href: 'tel:+2348150917741', label: 'CALL US', value: '+234 815 091 7741', accent: 'var(--gold)', bg: 'var(--gold-glow)', border: 'var(--border-gold)' },
+                { icon: 'email', href: 'mailto:jsgold.dw@gmail.com', label: 'EMAIL US', value: 'jsgold.dw@gmail.com', accent: '#50C8FF', bg: 'rgba(80,200,255,0.05)', border: 'rgba(80,200,255,0.2)' },
               ].map((ch) => (
                 <a key={ch.label} href={ch.href} style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none', padding: '12px 16px', borderRadius: 8, background: ch.bg, border: `1px solid ${ch.border}`, transition: 'all 0.25s ease' }}
                   onMouseEnter={(e) => { const el = e.currentTarget as HTMLElement; el.style.opacity = '0.85' }}
@@ -91,36 +91,16 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <div style={{ fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.1em', color: 'var(--text-dim)', marginBottom: 2 }}>WHATSAPP</div>
-                  <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#25D366' }}>Message Us Directly</div>
+                  <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#25D366' }}>Chat Directly With Us</div>
                 </div>
-                <div style={{ marginLeft: 'auto', fontSize: '0.65rem', color: 'var(--text-dim)', letterSpacing: '0.06em' }}>INSTANT →</div>
+                <div style={{ marginLeft: 'auto', fontSize: '0.65rem', color: 'var(--text-dim)', letterSpacing: '0.06em' }}>FAST REPLY →</div>
               </a>
-
-              {/* Meeting booking */}
-              <button
-                onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
-                style={{
-                  display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none',
-                  padding: '12px 16px', borderRadius: 8, background: 'var(--gold-glow)',
-                  border: '1px solid var(--border-gold)', cursor: 'pointer', fontFamily: 'inherit', transition: 'all 0.25s ease', width: '100%',
-                }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = 'var(--gold-dim)' }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = 'var(--gold-glow)' }}
-              >
-                <div style={{ width: 34, height: 34, borderRadius: 7, background: 'var(--gold-glow)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="2.5" width="11" height="10" rx="1.5" stroke="var(--gold)" strokeWidth="1.1" /><path d="M1.5 6h11M4.5 1.5v2M9.5 1.5v2" stroke="var(--gold)" strokeWidth="1.1" strokeLinecap="round" /></svg>
-                </div>
-                <div style={{ textAlign: 'left' }}>
-                  <div style={{ fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.1em', color: 'var(--text-dim)', marginBottom: 2 }}>MEETING</div>
-                  <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--gold)' }}>Book a Technical Consultation</div>
-                </div>
-              </button>
             </div>
           </div>
 
-          {/* Partnership workflow checklist */}
-          <div style={{ padding: '26px', borderRadius: 12, background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)', backdropFilter: 'blur(25px)' }}>
-            <div className="section-label" style={{ marginBottom: 18 }}>Partnership Workflow</div>
+          {/* How We Work checklist */}
+          <div style={{ padding: '26px', borderRadius: 14, background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)', backdropFilter: 'blur(25px)' }}>
+            <div className="section-label" style={{ marginBottom: 18 }}>Our Engagement Process</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               {partnershipWorkflow.map((step, i) => (
                 <button key={step.id} onClick={() => toggle(step.id)}
@@ -141,8 +121,8 @@ export default function ContactSection() {
                     </div>
                   </div>
                   <div>
-                    <div style={{ fontSize: '0.78rem', fontWeight: 600, color: checked.has(step.id) ? 'var(--gold)' : 'var(--text-primary)', transition: 'color 0.2s ease', lineHeight: 1.3 }}>{step.label}</div>
-                    <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', marginTop: 3, lineHeight: 1.5 }}>{step.desc}</div>
+                    <div style={{ fontSize: '0.8rem', fontWeight: 600, color: checked.has(step.id) ? 'var(--gold)' : 'var(--text-primary)', transition: 'color 0.2s ease', lineHeight: 1.3 }}>{step.label}</div>
+                    <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginTop: 3, lineHeight: 1.5 }}>{step.desc}</div>
                   </div>
                 </button>
               ))}
@@ -157,15 +137,15 @@ export default function ContactSection() {
           <div style={{ display: 'flex', gap: 0, marginBottom: 28, borderBottom: '1px solid var(--border-subtle)' }}>
             {[
               { key: 'brief', label: 'Project Brief' },
-              { key: 'consult', label: 'Consultation Request' },
-              { key: 'partnership', label: 'Strategic Partnership' },
+              { key: 'assessment', label: 'Free Assessment' },
+              { key: 'consult', label: 'Consultation' },
             ].map((tab) => (
               <button
                 key={tab.key}
                 onClick={() => setActiveTab(tab.key as typeof activeTab)}
                 style={{
-                  padding: '9px 14px', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit',
-                  fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.04em',
+                  padding: '9px 16px', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit',
+                  fontSize: '0.74rem', fontWeight: 700, letterSpacing: '0.04em',
                   color: activeTab === tab.key ? 'var(--gold)' : 'var(--text-muted)',
                   borderBottom: `2px solid ${activeTab === tab.key ? 'var(--gold)' : 'transparent'}`,
                   marginBottom: -1, transition: 'all 0.2s ease',
@@ -177,64 +157,70 @@ export default function ContactSection() {
           </div>
 
           {submitted ? (
-            <div style={{ textAlign: 'center', padding: '52px 20px' }}>
+            <div style={{ textAlign: 'center', padding: '48px 20px' }}>
               <div style={{ width: 56, height: 56, borderRadius: '50%', background: 'var(--gold-glow)', border: '1px solid var(--border-gold)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px', boxShadow: '0 0 24px var(--gold-glow)' }}>
                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4.5 11l5 5L17.5 6" stroke="var(--gold)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>
               </div>
-              <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', margin: '0 0 10px' }}>Request Received</h3>
-              <p style={{ fontSize: '0.83rem', color: 'var(--text-muted)', lineHeight: 1.7, margin: '0 0 24px' }}>
-                Our engineering team will review your submission and contact you within 24 business hours to schedule a preliminary technical consultation.
+              <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: 'var(--text-primary)', margin: '0 0 10px' }}>Message Received!</h3>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.7, margin: '0 0 24px' }}>
+                Thank you for reaching out. A JS-GOLD technical lead will review your submission and contact you within 24 hours.
               </p>
-              <button onClick={() => { setSubmitted(false); setForm({ name: '', email: '', scope: '', brief: '' }) }}
+              <button onClick={() => { setSubmitted(false); setForm({ name: '', email: '', phone: '', scope: '', brief: '' }) }}
                 style={{ padding: '9px 20px', borderRadius: 7, background: 'transparent', border: '1px solid var(--border-gold)', color: 'var(--gold)', fontSize: '0.76rem', fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' }}>
-                Submit Another Request
+                Send Another Message
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+              {activeTab === 'assessment' && (
+                <div style={{ padding: '12px 14px', borderRadius: 8, background: 'rgba(80,200,255,0.06)', border: '1px solid rgba(80,200,255,0.2)', fontSize: '0.76rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
+                  Request a complimentary technical audit of your existing network, server infrastructure, or audiovisual facility. No obligation.
+                </div>
+              )}
               {activeTab === 'consult' && (
-                <div style={{ padding: '12px 14px', borderRadius: 7, background: 'rgba(80,200,255,0.06)', border: '1px solid rgba(80,200,255,0.2)', fontSize: '0.76rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
-                  Request a 30-minute discovery call with a JS-GOLD division lead. No obligation — designed to clarify scope and assess feasibility before any commitment.
-                </div>
-              )}
-              {activeTab === 'partnership' && (
-                <div style={{ padding: '12px 14px', borderRadius: 7, background: 'var(--gold-glow)', border: '1px solid var(--border-gold)', fontSize: '0.76rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
-                  For institutions or organisations seeking a long-term strategic technology partner. Include your digital transformation objectives and existing infrastructure constraints.
+                <div style={{ padding: '12px 14px', borderRadius: 8, background: 'var(--gold-glow)', border: '1px solid var(--border-gold)', fontSize: '0.76rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
+                  Schedule a 30-minute discovery session with our technical team to evaluate architecture options, timelines, and budgets.
                 </div>
               )}
 
               <div>
-                <label style={{ fontSize: '0.62rem', fontWeight: 700, letterSpacing: '0.12em', color: 'var(--text-dim)', display: 'block', marginBottom: 6 }}>NAME / ORGANISATION</label>
-                <input className="cyber-input" type="text" placeholder="Full name · Institution or company name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required />
+                <label style={{ fontSize: '0.62rem', fontWeight: 700, letterSpacing: '0.12em', color: 'var(--text-dim)', display: 'block', marginBottom: 6 }}>YOUR NAME / ORGANIZATION</label>
+                <input className="cyber-input" type="text" placeholder="e.g. John Doe · Acme Technologies" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required />
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label style={{ fontSize: '0.62rem', fontWeight: 700, letterSpacing: '0.12em', color: 'var(--text-dim)', display: 'block', marginBottom: 6 }}>EMAIL ADDRESS</label>
+                  <input className="cyber-input" type="email" placeholder="name@domain.com" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required />
+                </div>
+                <div>
+                  <label style={{ fontSize: '0.62rem', fontWeight: 700, letterSpacing: '0.12em', color: 'var(--text-dim)', display: 'block', marginBottom: 6 }}>PHONE NUMBER (OPTIONAL)</label>
+                  <input className="cyber-input" type="tel" placeholder="+234 ..." value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} />
+                </div>
               </div>
 
               <div>
-                <label style={{ fontSize: '0.62rem', fontWeight: 700, letterSpacing: '0.12em', color: 'var(--text-dim)', display: 'block', marginBottom: 6 }}>BUSINESS EMAIL</label>
-                <input className="cyber-input" type="email" placeholder="official@institution.edu.ng" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required />
-              </div>
-
-              <div>
-                <label style={{ fontSize: '0.62rem', fontWeight: 700, letterSpacing: '0.12em', color: 'var(--text-dim)', display: 'block', marginBottom: 6 }}>PROJECT SCOPE</label>
+                <label style={{ fontSize: '0.62rem', fontWeight: 700, letterSpacing: '0.12em', color: 'var(--text-dim)', display: 'block', marginBottom: 6 }}>PRIMARY AREA OF INTEREST</label>
                 <select className="cyber-input" value={form.scope} onChange={(e) => setForm({ ...form, scope: e.target.value })} required style={{ cursor: 'pointer' }}>
-                  <option value="">Select a division or engagement type →</option>
+                  <option value="">Select a service category →</option>
                   {projectScopes.map((s) => <option key={s} value={s}>{s}</option>)}
                 </select>
               </div>
 
               <div>
                 <label style={{ fontSize: '0.62rem', fontWeight: 700, letterSpacing: '0.12em', color: 'var(--text-dim)', display: 'block', marginBottom: 6 }}>
-                  {activeTab === 'consult' ? 'CONSULTATION AGENDA' : activeTab === 'partnership' ? 'TRANSFORMATION OBJECTIVES' : 'PROJECT BRIEFING'}
+                  {activeTab === 'assessment' ? 'INFRASTRUCTURE / SYSTEM DETAILS' : activeTab === 'consult' ? 'CONSULTATION OBJECTIVES' : 'PROJECT SCOPE & REQUIREMENTS'}
                 </label>
-                <textarea className="cyber-input" placeholder="Describe your project scope, scale, timeline, and any existing infrastructure constraints..." rows={5} value={form.brief} onChange={(e) => setForm({ ...form, brief: e.target.value })} required style={{ resize: 'vertical', minHeight: 96 }} />
+                <textarea className="cyber-input" placeholder="Tell us about what you want to build, broadcast, or improve, along with any key deadlines..." rows={4} value={form.brief} onChange={(e) => setForm({ ...form, brief: e.target.value })} required style={{ resize: 'vertical', minHeight: 90 }} />
               </div>
 
-              <button type="submit" className="gold-glow-btn" style={{ padding: '15px 28px', borderRadius: 10, fontSize: '0.84rem', border: 'none', cursor: 'pointer', fontFamily: 'inherit', width: '100%', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
-                Initiate Strategic Partnership
+              <button type="submit" className="gold-glow-btn" style={{ padding: '14px 28px', borderRadius: 9, fontSize: '0.84rem', border: 'none', cursor: 'pointer', fontFamily: 'inherit', width: '100%', letterSpacing: '0.04em', fontWeight: 700 }}>
+                {activeTab === 'assessment' ? 'Request Free Technical Assessment →' : activeTab === 'consult' ? 'Book Technical Consultation →' : 'Submit Project Inquiry →'}
               </button>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: 7, justifyContent: 'center' }}>
                 <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><rect x="1.5" y="4.5" width="8" height="5.5" rx="1" stroke="var(--border-subtle)" strokeWidth="1" /><path d="M3.5 4.5V3a2 2 0 014 0v1.5" stroke="var(--border-subtle)" strokeWidth="1" /></svg>
-                <span style={{ fontSize: '0.65rem', color: 'var(--text-dim)', letterSpacing: '0.05em' }}>Encrypted · Confidential · No unsolicited communications</span>
+                <span style={{ fontSize: '0.65rem', color: 'var(--text-dim)', letterSpacing: '0.05em' }}>Confidential · We respond within 24 business hours</span>
               </div>
             </form>
           )}

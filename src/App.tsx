@@ -5,8 +5,9 @@ import HeroSection from './components/HeroSection'
 import AtAGlance from './components/AtAGlance'
 import Footer from './components/Footer'
 import SubPageShell from './components/SubPageShell'
+import { scrollTo } from './utils'
 
-// Attach ripple effect to any .ripple button
+// Ripple effect utility
 export function attachRipple(e: React.MouseEvent<HTMLElement>) {
   const btn = e.currentTarget as HTMLElement
   const ripple = document.createElement('span')
@@ -18,22 +19,16 @@ export function attachRipple(e: React.MouseEvent<HTMLElement>) {
   ripple.addEventListener('animationend', () => ripple.remove())
 }
 
-// Lazy-load main SPA pages
+// Lazy-load sections
 const CompanyProfileSection = lazy(() => import('./components/CompanyProfileSection'))
+const ServicesSection = lazy(() => import('./components/ServicesSection'))
+const IndustriesSection = lazy(() => import('./components/IndustriesSection'))
+const PortfolioSection = lazy(() => import('./components/PortfolioSection'))
 const InsightsSection = lazy(() => import('./components/InsightsSection'))
 const TestimonialsSection = lazy(() => import('./components/TestimonialsSection'))
 const ContactSection = lazy(() => import('./components/ContactSection'))
 
-// Lazy-load sub-pages
-const ServicesSection = lazy(() => import('./components/ServicesSection'))
-const IndustriesSection = lazy(() => import('./components/IndustriesSection'))
-const TechStackSection = lazy(() => import('./components/TechStackSection'))
-const ValuePropSection = lazy(() => import('./components/ValuePropSection'))
-const ProcessSection = lazy(() => import('./components/ProcessSection'))
-const CaseStudiesSection = lazy(() => import('./components/CaseStudiesSection'))
-const CapacitySection = lazy(() => import('./components/CapacitySection'))
-
-export type SubPage = 'services' | 'approach' | 'case-studies' | 'capacity' | null
+export type SubPage = 'services' | null
 
 function SectionFallback() {
   return (
@@ -43,77 +38,11 @@ function SectionFallback() {
   )
 }
 
-const subPageMeta: Record<NonNullable<SubPage>, { title: string; breadcrumb: string }> = {
-  services: { title: 'Our Services & Divisions', breadcrumb: 'Services' },
-  approach: { title: 'Our Approach & Methodology', breadcrumb: 'Our Approach' },
-  'case-studies': { title: 'Case Studies', breadcrumb: 'Case Studies' },
-  capacity: { title: 'Training & Capacity Development', breadcrumb: 'Capacity' },
-}
-
-function SubPageContent({ page, onOpenSubPage }: { page: NonNullable<SubPage>; onOpenSubPage: (p: NonNullable<SubPage>) => void }) {
-  switch (page) {
-    case 'services':
-      return (
-        <Suspense fallback={<SectionFallback />}>
-          <ServicesSection />
-          <IndustriesSection />
-          <TechStackSection />
-          {/* CTA to approach sub-page */}
-          <div className="px-4 sm:px-6 md:px-8 pb-16" style={{ maxWidth: 1280, margin: '0 auto' }}>
-            <hr className="razor-line" style={{ marginBottom: 48 }} />
-            <div className="flex flex-wrap gap-3 items-center justify-between">
-              <div>
-                <div style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: 4 }}>Want to know how we deliver?</div>
-                <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>Our nine-step methodology and why clients choose us.</div>
-              </div>
-              <div className="flex flex-wrap gap-3">
-                <button
-                  onClick={() => onOpenSubPage('approach')}
-                  className="glass-btn"
-                  style={{ padding: '10px 22px', borderRadius: 8, fontSize: '0.78rem', cursor: 'pointer', fontFamily: 'inherit' }}
-                >
-                  Our Methodology →
-                </button>
-                <button
-                  onClick={() => onOpenSubPage('case-studies')}
-                  className="glass-btn"
-                  style={{ padding: '10px 22px', borderRadius: 8, fontSize: '0.78rem', cursor: 'pointer', fontFamily: 'inherit' }}
-                >
-                  View Case Studies →
-                </button>
-              </div>
-            </div>
-          </div>
-        </Suspense>
-      )
-    case 'approach':
-      return (
-        <Suspense fallback={<SectionFallback />}>
-          <ValuePropSection />
-          <ProcessSection />
-        </Suspense>
-      )
-    case 'case-studies':
-      return (
-        <Suspense fallback={<SectionFallback />}>
-          <CaseStudiesSection />
-        </Suspense>
-      )
-    case 'capacity':
-      return (
-        <Suspense fallback={<SectionFallback />}>
-          <CapacitySection />
-        </Suspense>
-      )
-  }
-}
-
 export default function App() {
   const [theme, setTheme] = useState<Theme>('light')
   const [activePage, setActivePage] = useState('home')
   const [subPage, setSubPage] = useState<SubPage>(null)
 
-  // Apply stored theme on mount
   useEffect(() => {
     const stored = getStoredTheme()
     setTheme(stored)
@@ -126,8 +55,9 @@ export default function App() {
     applyTheme(next)
   }
 
-  // Track active section for nav highlight
+  // Section scroll tracking — only when no sub-page is open
   useEffect(() => {
+    if (subPage) return
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -136,13 +66,13 @@ export default function App() {
       },
       { rootMargin: '-40% 0px -40% 0px', threshold: 0 }
     )
-    const ids = ['home', 'company-profile', 'insights', 'testimonials', 'contact']
+    const ids = ['home', 'about', 'portfolio', 'insights', 'testimonials', 'contact']
     ids.forEach((id) => {
       const el = document.getElementById(id)
       if (el) observer.observe(el)
     })
     return () => observer.disconnect()
-  }, [])
+  }, [subPage])
 
   // Section fade-in on scroll
   useEffect(() => {
@@ -161,13 +91,16 @@ export default function App() {
     return () => fadeObserver.disconnect()
   }, [])
 
-  const openSubPage = (page: NonNullable<SubPage>) => {
-    setSubPage(page)
-    // Scroll sub-page overlay to top
+  const openServices = () => {
+    setSubPage('services')
+    setActivePage('services')
     setTimeout(() => window.scrollTo({ top: 0 }), 10)
   }
 
-  const closeSubPage = () => setSubPage(null)
+  const closeSubPage = () => {
+    setSubPage(null)
+    setActivePage('home')
+  }
 
   const Background = () => (
     <>
@@ -192,20 +125,35 @@ export default function App() {
     <div className="min-h-screen" style={{ background: 'var(--bg-primary)', transition: 'background 0.3s ease' }}>
       <Background />
 
-      <Nav activePage={activePage} theme={theme} onToggleTheme={toggleTheme} />
+      <Nav
+        activePage={activePage}
+        theme={theme}
+        onToggleTheme={toggleTheme}
+        onOpenServices={openServices}
+      />
 
       <main className="fade-in-on-load" style={{ position: 'relative', zIndex: 1 }}>
 
-        {/* HOME */}
+        {/* HOME — hero + divisions overview + industries teaser */}
         <div id="home">
-          <HeroSection />
-          <AtAGlance onOpenSubPage={openSubPage} />
+          <HeroSection onOpenServices={openServices} />
+          <AtAGlance onOpenServices={openServices} />
+          <Suspense fallback={<SectionFallback />}>
+            <IndustriesSection />
+          </Suspense>
         </div>
 
-        {/* COMPANY PROFILE */}
-        <div id="company-profile">
+        {/* ABOUT */}
+        <div id="about">
           <Suspense fallback={<SectionFallback />}>
             <CompanyProfileSection />
+          </Suspense>
+        </div>
+
+        {/* PORTFOLIO */}
+        <div id="portfolio">
+          <Suspense fallback={<SectionFallback />}>
+            <PortfolioSection />
           </Suspense>
         </div>
 
@@ -231,17 +179,39 @@ export default function App() {
         </div>
       </main>
 
-      <Footer theme={theme} />
+      <Footer theme={theme} onOpenServices={openServices} />
 
-      {/* Sub-page overlay */}
-      {subPage && (
+      {/* Services sub-page overlay */}
+      {subPage === 'services' && (
         <SubPageShell
-          key={subPage}
-          title={subPageMeta[subPage].title}
-          breadcrumb={subPageMeta[subPage].breadcrumb}
+          key="services"
+          title="Our Services"
+          breadcrumb="Services"
           onClose={closeSubPage}
         >
-          <SubPageContent page={subPage} onOpenSubPage={openSubPage} />
+          <Suspense fallback={<SectionFallback />}>
+            <ServicesSection />
+            {/* CTA at bottom of services overlay */}
+            <div className="px-4 sm:px-6 md:px-8 pb-20" style={{ maxWidth: 1280, margin: '0 auto' }}>
+              <hr className="razor-line" style={{ marginBottom: 48 }} />
+              <div className="flex flex-wrap gap-4 items-center justify-between">
+                <div>
+                  <div style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: 6 }}>Ready to get started?</div>
+                  <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Book a free consultation — we'll scope your project at no obligation.</div>
+                </div>
+                <button
+                  onClick={() => {
+                    closeSubPage()
+                    setTimeout(() => scrollTo('contact'), 350)
+                  }}
+                  className="gold-glow-btn"
+                  style={{ padding: '13px 28px', borderRadius: 9, fontSize: '0.84rem', border: 'none', cursor: 'pointer', fontFamily: 'inherit' }}
+                >
+                  Request a Free Consultation →
+                </button>
+              </div>
+            </div>
+          </Suspense>
         </SubPageShell>
       )}
 

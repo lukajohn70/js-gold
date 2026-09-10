@@ -1,62 +1,62 @@
 const testimonials = [
   {
     stars: 5,
-    text: "JS-GOLD deployed a complete campus network across our 14-building institution in under three weeks. The MikroTik CHR configuration they delivered is flawless — zero downtime since go-live. Their documentation alone is worth the engagement fee.",
-    name: 'Dr. Adebayo Ogundimu',
+    text: "JS-GOLD deployed a complete campus network across our multi-building institution in under three weeks. The MikroTik routing configuration they delivered is flawless — zero downtime since go-live. Their technical documentation and staff training were exceptional.",
+    name: 'Dr. A. Ogundimu',
     role: 'Director of ICT',
-    org: 'Federal Polytechnic, Offa',
+    org: 'Higher Education Institution',
     initials: 'AO',
     color: '#D4AF37',
     size: 'large',
   },
   {
     stars: 5,
-    text: "The live-stream production quality for our annual convocation ceremony was broadcast-grade. Multi-camera sync, hardware encoding, professional audio — all seamlessly integrated by a single team.",
-    name: 'Mrs. Folake Adesanya',
+    text: "The live-stream production quality for our annual national convention was true broadcast-grade. Multi-camera switching, hardware encoding, and crystal-clear audio were all flawlessly coordinated by a single accountable team.",
+    name: 'F. Adesanya',
     role: 'Head of Communications',
-    org: 'Anchor University Lagos',
+    org: 'National Faith & Event Organization',
     initials: 'FA',
     color: '#50C8FF',
     size: 'small',
   },
   {
     stars: 5,
-    text: "We commissioned JS-GOLD for a complete digital rebrand: website, UI/UX system, and a corporate brand film. The output was cinematic quality at a fraction of what Lagos agencies quoted us. The project was delivered two days ahead of schedule.",
-    name: 'Engr. Chukwuemeka Eze',
+    text: "We commissioned JS-GOLD for a complete digital overhaul: custom web portal, UI/UX system, and a cinematic corporate film. The output was top-tier quality, delivered ahead of schedule and with rigorous attention to detail.",
+    name: 'Engr. C. Eze',
     role: 'Managing Director',
-    org: 'Transcorp Energy Solutions',
+    org: 'Commercial Energy Solutions Group',
     initials: 'CE',
     color: '#A78BFA',
     size: 'medium',
   },
   {
     stars: 5,
-    text: "Their enterprise hotspot gateway solution for our student accommodation handles 800+ concurrent users without degradation. The billing integration with our ERP was a custom build they delivered in-scope at no extra cost.",
-    name: 'Prof. Ngozi Nwosu',
-    role: 'VP Infrastructure',
-    org: 'Pan-Atlantic University',
+    text: "Their enterprise hotspot gateway solution for our student halls handles 1,000+ concurrent users without any degradation. The bandwidth management and automated user captive portal eliminated all our previous connectivity complaints.",
+    name: 'Prof. N. Nwosu',
+    role: 'VP Infrastructure & Facilities',
+    org: 'Private Academic Campus',
     initials: 'NN',
     color: '#D4AF37',
     size: 'small',
   },
   {
     stars: 5,
-    text: "JS-GOLD handled our product launch event end-to-end: structural cabling for the venue, full AV rig, live stream to three platforms simultaneously, and post-production of the highlight reel. A genuinely elite operation.",
-    name: 'Tayo Ajayi',
-    role: 'Brand & Events Lead',
-    org: 'Flutterwave',
+    text: "JS-GOLD handled our hybrid technology summit end-to-end: venue network links, full AV rig, live streaming to multiple international platforms, and post-production highlight reels. A genuinely dependable team with deep technical bench strength.",
+    name: 'T. Ajayi',
+    role: 'Lead Project Coordinator',
+    org: 'Fintech & Digital Innovation Hub',
     initials: 'TA',
     color: '#50C8FF',
     size: 'large',
   },
   {
     stars: 5,
-    text: "The architectural photography package they delivered for our real estate portfolio helped us close 40% faster on premium units. Every image is a masterclass in HDR compositing.",
-    name: 'Amaka Obi',
-    role: 'Marketing Director',
-    org: 'Grenadines Homes',
+    text: "The architectural cinematography and brand media package they delivered gave our commercial development an immediate competitive edge. Their creative eye combined with technical precision is rare in this market.",
+    name: 'A. Obi',
+    role: 'Marketing & Brand Director',
+    org: 'Real Estate & Hospitality Group',
     initials: 'AO',
-    color: '#A78BFA',
+    color: '#34D399',
     size: 'small',
   },
 ]
@@ -83,7 +83,7 @@ export default function TestimonialsSection() {
       }}
     >
       <div style={{ textAlign: 'center', marginBottom: 60 }}>
-        <div className="section-label" style={{ marginBottom: 14 }}>◆ &nbsp; Client Intelligence</div>
+        <div className="section-label" style={{ marginBottom: 14 }}>◆ &nbsp; Client Testimonials</div>
         <h2
           style={{
             fontSize: 'clamp(1.6rem, 2.5vw, 2.4rem)',
@@ -93,99 +93,97 @@ export default function TestimonialsSection() {
             margin: '0 0 12px',
           }}
         >
-          Field-Verified Results
+          Trusted by Leaders Across Sectors
         </h2>
         <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', margin: 0 }}>
-          What clients say, in their own words
+          Feedback from institutions, enterprises, and creative partners who depend on our work.
         </p>
       </div>
 
-      {/* Masonry grid */}
+      {/* Masonry-like grid */}
       <div
         className="masonry-cols"
         style={{
-          columns: 3,
+          columns: '1 sm:2 lg:3',
           columnGap: 20,
           columnFill: 'balance',
         }}
       >
-        {testimonials.map((t, i) => (
-          <div
-            key={i}
-            className="testimonial-card"
-            style={{
-              padding: t.size === 'large' ? '28px' : t.size === 'medium' ? '24px' : '20px',
-              breakInside: 'avoid',
-              marginBottom: 20,
-              display: 'inline-block',
-              width: '100%',
-            }}
-          >
-            <StarRating count={t.stars} />
-
-            <p
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {testimonials.map((t, i) => (
+            <div
+              key={i}
+              className="testimonial-card flex flex-col justify-between"
               style={{
-                fontSize: t.size === 'large' ? '0.9rem' : '0.82rem',
-                lineHeight: 1.75,
-                color: 'var(--text-muted)',
-                margin: '14px 0 20px',
+                padding: '26px 24px',
+                borderRadius: 14,
+                background: 'var(--bg-card)',
+                border: '1px solid var(--border-subtle)',
               }}
             >
-              "{t.text}"
-            </p>
+              <div>
+                <StarRating count={t.stars} />
 
-            <hr style={{ border: 'none', borderTop: '1px solid var(--border-subtle)', margin: '0 0 16px' }} />
-
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                {/* Avatar */}
-                <div
+                <p
                   style={{
-                    width: 36,
-                    height: 36,
-                    borderRadius: '50%',
-                    background: `${t.color}20`,
-                    border: `1px solid ${t.color}50`,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: '0.68rem',
-                    fontWeight: 700,
-                    color: t.color,
-                    flexShrink: 0,
+                    fontSize: '0.86rem',
+                    lineHeight: 1.75,
+                    color: 'var(--text-muted)',
+                    margin: '16px 0 20px',
                   }}
                 >
-                  {t.initials}
-                </div>
-                <div>
-                  <div style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-primary)', lineHeight: 1.2 }}>{t.name}</div>
-                  <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', lineHeight: 1.3, marginTop: 2 }}>
-                    {t.role}
+                  "{t.text}"
+                </p>
+              </div>
+
+              <div>
+                <hr style={{ border: 'none', borderTop: '1px solid var(--border-subtle)', margin: '0 0 16px' }} />
+
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                    <div
+                      style={{
+                        width: 38,
+                        height: 38,
+                        borderRadius: '50%',
+                        background: `${t.color}15`,
+                        color: t.color,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: '0.75rem',
+                        fontWeight: 800,
+                        flexShrink: 0,
+                      }}
+                    >
+                      {t.initials}
+                    </div>
+                    <div>
+                      <div style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--text-primary)' }}>
+                        {t.name}
+                      </div>
+                      <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>
+                        {t.role}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    style={{
+                      fontSize: '0.64rem',
+                      fontWeight: 600,
+                      color: 'var(--text-dim)',
+                      textAlign: 'right',
+                      maxWidth: 120,
+                    }}
+                  >
+                    {t.org}
                   </div>
                 </div>
               </div>
-
-              {/* Org stamp */}
-              <div
-                style={{
-                  padding: '4px 10px',
-                  borderRadius: 4,
-                  background: `${t.color}0D`,
-                  border: `1px solid ${t.color}25`,
-                  fontSize: '0.62rem',
-                  fontWeight: 600,
-                  color: t.color,
-                  letterSpacing: '0.04em',
-                  textAlign: 'right',
-                  maxWidth: 120,
-                  lineHeight: 1.4,
-                }}
-              >
-                {t.org}
-              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   )
