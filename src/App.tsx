@@ -2,6 +2,7 @@ import { useState, useEffect, lazy, Suspense } from 'react'
 import { getStoredTheme, applyTheme, type Theme } from './utils'
 import Nav from './components/Nav'
 import HeroSection from './components/HeroSection'
+import TrustBar from './components/TrustBar'
 import AtAGlance from './components/AtAGlance'
 import MarqueeRibbon from './components/MarqueeRibbon'
 import Footer from './components/Footer'
@@ -135,10 +136,10 @@ export default function App() {
 
       <main className="fade-in-on-load" style={{ position: 'relative', zIndex: 1 }}>
 
-        {/* HOME — hero + marquee + divisions overview + industries teaser */}
+        {/* HOME — hero + trust bar + divisions overview + industries teaser */}
         <div id="home">
           <HeroSection onOpenServices={openServices} />
-          <MarqueeRibbon />
+          <TrustBar />
           <AtAGlance onOpenServices={openServices} />
           <Suspense fallback={<SectionFallback />}>
             <IndustriesSection />

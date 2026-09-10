@@ -6,13 +6,12 @@ interface PortfolioItem {
   title: string
   category: string
   division: string
-  previewType: 'app' | 'stream' | 'network' | 'video'
+  image: string
   headline: string
   solution: string
   technologies: string[]
   metrics: string
-  accent: string
-  badgeText: string
+  badgeColor: string
 }
 
 const filterCategories = [
@@ -29,78 +28,72 @@ const portfolioItems: PortfolioItem[] = [
     title: 'Multi-Building Campus Wi-Fi & Core Routing',
     category: 'Network Deployments',
     division: 'Software & Networking',
-    previewType: 'network',
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&auto=format&fit=crop&q=80',
     headline: 'High-density hotspot routing across 14 campus blocks supporting 6,000+ simultaneous devices.',
     solution: 'Engineered MikroTik core routing with captive portal User-Manager authentication, dynamic QoS bandwidth traffic shaping, and redundant fiber links.',
     technologies: ['MikroTik RouterOS', 'VLAN Segmentation', 'User-Manager', 'QoS Queue Trees', 'Fibre Backhaul'],
     metrics: '99.8% Network Uptime • 65% Bandwidth Waste Reduction',
-    accent: '#50C8FF',
-    badgeText: 'MikroTik Core v7',
+    badgeColor: 'bg-blue-100 text-blue-800 border-blue-200',
   },
   {
     id: 'hybrid-convocation-stream',
     title: 'National Convocation Multi-Camera Live Broadcast',
     category: 'Broadcast & Live',
     division: 'Broadcast & AV Systems',
-    previewType: 'stream',
+    image: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&auto=format&fit=crop&q=80',
     headline: 'Four-hour zero-dropout live stream broadcast simultaneously to physical overflow auditoriums and 15,000+ remote viewers.',
     solution: 'Configured 6-camera vMix production rig with hardware encoding, Dante digital audio routing, and bonded dual-WAN failover internet links.',
     technologies: ['vMix 4K Pro', 'Hardware Encoders', 'Dante AoIP', 'SRT / RTMP', 'Blackmagic ATEM'],
     metrics: '15,400 Concurrent Viewers • 0 Dropped Frames',
-    accent: '#E5C07B',
-    badgeText: 'Live Multicam PGM',
+    badgeColor: 'bg-amber-100 text-amber-800 border-amber-200',
   },
   {
     id: 'enterprise-erp',
     title: 'Institutional Operations & Portal Ecosystem',
     category: 'Software & Apps',
     division: 'Software & Networking',
-    previewType: 'app',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80',
     headline: 'Centralized administrative web portal, automated billing verification, and encrypted student records system.',
     solution: 'Engineered modular Laravel application with role-based access control, responsive dashboards, and real-time payment reconciliation APIs.',
     technologies: ['Laravel 11', 'React', 'MySQL', 'REST API', 'Tailwind CSS'],
     metrics: '4,500+ Daily Active Users • 75% Faster Processing',
-    accent: '#50C8FF',
-    badgeText: 'Laravel Cloud API',
+    badgeColor: 'bg-blue-100 text-blue-800 border-blue-200',
   },
   {
     id: 'brand-film-campaign',
     title: 'Cinematic Corporate Brand Film & Visual System',
     category: 'Creative Media',
     division: 'Creative Media',
-    previewType: 'video',
+    image: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&auto=format&fit=crop&q=80',
     headline: 'Flagship documentary capturing enterprise operational milestones, accompanied by comprehensive visual branding guidelines.',
     solution: 'Shot on 4K cinema camera packages with drone aerials, color graded in DaVinci Resolve, complemented by custom sound design and motion intros.',
     technologies: ['4K Cinematography', 'DaVinci Resolve', 'After Effects', 'Figma', 'Sound Mastering'],
     metrics: 'Over 650,000 Digital Impressions • Aired Nationally',
-    accent: '#A78BFA',
-    badgeText: '4K Cinema / DaVinci',
+    badgeColor: 'bg-purple-100 text-purple-800 border-purple-200',
   },
   {
     id: 'fintech-mobile-app',
     title: 'Cross-Platform Financial Services Mobile App',
     category: 'Software & Apps',
     division: 'Software & Networking',
-    previewType: 'app',
+    image: 'https://images.unsplash.com/photo-1556742049-0a67e557224f?w=800&auto=format&fit=crop&q=80',
     headline: 'Biometric consumer and merchant mobile application with offline transaction caching for unstable network zones.',
     solution: 'Built with Flutter for high performance across Android and iOS devices, communicating via encrypted payloads to an API gateway.',
     technologies: ['Flutter', 'Dart', 'State Management', 'REST API', 'Figma UI/UX'],
     metrics: '4.8★ App Store Rating • Sub-second Transaction Times',
-    accent: '#50C8FF',
-    badgeText: 'Flutter Mobile App',
+    badgeColor: 'bg-blue-100 text-blue-800 border-blue-200',
   },
   {
     id: 'audio-production-suite',
     title: 'Commercial Musical Jingles & Station Identity',
     category: 'Creative Media',
     division: 'Broadcast & AV Systems',
-    previewType: 'video',
+    image: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=800&auto=format&fit=crop&q=80',
     headline: 'Custom acoustic branding, radio signatures, and voiceover audio mastering for regional marketing campaigns.',
     solution: 'Composed, recorded, and mixed original musical anthems meeting international broadcast loudness standards (EBU R128).',
     technologies: ['DAW Pro Tools', 'Mastering EQ', 'Voiceover Suite', 'Foley Sound'],
     metrics: 'EBU R128 Broadcast Compliant • 12 Jingles Produced',
-    accent: '#34D399',
-    badgeText: 'Studio Master Audio',
+    badgeColor: 'bg-emerald-100 text-emerald-800 border-emerald-200',
   },
 ]
 
@@ -112,223 +105,134 @@ export default function PortfolioSection() {
     : portfolioItems.filter((item) => item.category === activeFilter)
 
   return (
-    <div id="portfolio" className="section-fade px-4 sm:px-6 md:px-8 py-20 md:py-28 max-w-7xl mx-auto">
-      {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
-        <div>
-          <div className="section-label mb-3">
-            <span>◆</span>
-            <span>PROVEN RESULTS &amp; CASE STUDIES</span>
+    <section id="portfolio" className="py-20 md:py-28 bg-slate-50/60 border-b border-slate-200/80">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+          <div>
+            <div className="section-label mb-3">
+              <span>◆</span>
+              <span>VERIFIED CASE STUDIES</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-slate-900">
+              Featured Outcomes
+            </h2>
+            <p className="text-base text-slate-600 max-w-xl mt-3 leading-relaxed">
+              Explore how our engineering precision and creative media craftsmanship solve complex operational challenges in the field.
+            </p>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[var(--text-primary)]">
-            Our Work in the Field
-          </h2>
-          <p className="text-sm sm:text-base text-[var(--text-muted)] max-w-xl mt-3 leading-relaxed">
-            Real outcomes across software engineering, enterprise network installations, and broadcast productions.
-          </p>
+
+          {/* Filter Chips (Brandstore Style) */}
+          <div className="flex flex-wrap items-center gap-2 self-start md:self-auto">
+            {filterCategories.map((cat) => {
+              const isActive = activeFilter === cat
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setActiveFilter(cat)}
+                  className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                    isActive
+                      ? 'bg-slate-900 text-white shadow-md'
+                      : 'bg-white text-slate-600 border border-slate-200 hover:border-slate-300 hover:text-slate-900'
+                  }`}
+                >
+                  {cat}
+                </button>
+              )
+            })}
+          </div>
         </div>
 
-        {/* Filter Chips */}
-        <div className="flex flex-wrap items-center gap-2 self-start md:self-auto">
-          {filterCategories.map((cat) => {
-            const isActive = activeFilter === cat
-            return (
-              <button
-                key={cat}
-                onClick={() => setActiveFilter(cat)}
-                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                  isActive
-                    ? 'bg-[var(--gold)] text-black shadow-lg font-extrabold'
-                    : 'bg-[var(--bg-card)] text-[var(--text-muted)] border border-[var(--border-subtle)] hover:text-[var(--text-primary)]'
-                }`}
-              >
-                {cat}
-              </button>
-            )
-          })}
-        </div>
-      </div>
+        {/* Portfolio Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {filteredItems.map((item) => (
+            <div
+              key={item.id}
+              className="pro-card group overflow-hidden flex flex-col justify-between bg-white"
+            >
+              <div>
+                {/* Photo Thumbnail */}
+                <div className="relative h-52 overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent pointer-events-none" />
 
-      {/* Showcase Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-        {filteredItems.map((item) => (
-          <div
-            key={item.id}
-            className="glass-card rounded-2xl overflow-hidden flex flex-col justify-between group hover:border-[var(--border-gold)] transition-all"
-            style={{
-              borderTop: `3px solid ${item.accent}`,
-            }}
-          >
-            <div>
-              {/* Visual Simulated Viewport Header */}
-              <div
-                className="p-4 bg-[var(--bg-primary)] border-b border-[var(--border-subtle)]"
-                style={{
-                  background: 'linear-gradient(180deg, rgba(13,17,26,0.9) 0%, rgba(7,9,14,0.95) 100%)',
-                }}
-              >
-                <div className="flex items-center justify-between text-[11px] font-mono mb-3">
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-white/20 inline-block" />
-                    <span className="w-2 h-2 rounded-full bg-white/20 inline-block" />
-                    <span className="w-2 h-2 rounded-full bg-white/20 inline-block" />
+                  <div className="absolute top-4 left-4">
+                    <span className={`text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full border shadow-sm ${item.badgeColor}`}>
+                      {item.category}
+                    </span>
                   </div>
-                  <span
-                    className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded"
-                    style={{
-                      background: `${item.accent}15`,
-                      color: item.accent,
-                      border: `1px solid ${item.accent}30`,
-                    }}
-                  >
-                    {item.badgeText}
-                  </span>
                 </div>
 
-                {/* Simulated Preview Box */}
-                <div className="h-28 rounded-lg bg-black/50 border border-white/5 p-3 flex flex-col justify-between font-mono text-[11px]">
-                  {item.previewType === 'stream' && (
-                    <>
-                      <div className="flex items-center justify-between text-red-400 font-bold">
-                        <span className="flex items-center gap-1.5">
-                          <span className="w-2 h-2 rounded-full bg-red-500 pulse-dot" />
-                          LIVE BROADCAST
-                        </span>
-                        <span className="text-white/60">1080p60</span>
-                      </div>
-                      <div className="text-center text-xs text-white font-sans font-bold">
-                        {item.title}
-                      </div>
-                      <div className="flex items-center justify-between text-[10px] text-white/50">
-                        <span>vMix SRT Switcher</span>
-                        <span className="text-[var(--gold)]">Audio: Balanced OK</span>
-                      </div>
-                    </>
-                  )}
+                {/* Card Content */}
+                <div className="p-6">
+                  <h3 className="text-lg font-extrabold text-slate-900 mb-2 group-hover:text-amber-600 transition-colors leading-snug">
+                    {item.title}
+                  </h3>
 
-                  {item.previewType === 'network' && (
-                    <>
-                      <div className="flex items-center justify-between text-blue-400">
-                        <span>MikroTik RouterOS</span>
-                        <span className="text-emerald-400">● 1.25 Gbps</span>
-                      </div>
-                      <div className="space-y-1 text-[10px] text-white/70">
-                        <div>VLAN 10: Academic Core [Tagged]</div>
-                        <div>VLAN 20: Hotspot Portal [1,400 users]</div>
-                      </div>
-                      <div className="text-[10px] text-emerald-400 font-bold">
-                        QoS Dynamic Shaper Active (0% Loss)
-                      </div>
-                    </>
-                  )}
+                  <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                    {item.headline}
+                  </p>
 
-                  {item.previewType === 'app' && (
-                    <>
-                      <div className="flex items-center justify-between text-yellow-400">
-                        <span>Laravel 11 Cloud</span>
-                        <span className="text-emerald-400">200 OK 12ms</span>
-                      </div>
-                      <div className="text-white/80 text-[10px] space-y-0.5">
-                        <div>GET /api/v1/auth/session → Valid</div>
-                        <div>Encrypted AES-256 Storage</div>
-                      </div>
-                      <div className="text-[10px] text-white/50">
-                        Syncing 4,500+ Active Clients
-                      </div>
-                    </>
-                  )}
-
-                  {item.previewType === 'video' && (
-                    <>
-                      <div className="flex items-center justify-between text-purple-400">
-                        <span>DaVinci Colorist Master</span>
-                        <span className="text-white/60">ProRes 422 HQ</span>
-                      </div>
-                      <div className="text-center text-xs text-white font-sans font-bold">
-                        Cinematic 4K Master Grade
-                      </div>
-                      <div className="flex items-center justify-between text-[10px] text-white/50">
-                        <span>Timeline: 24.000 fps</span>
-                        <span className="text-[var(--gold)]">LUT: Film Emulation</span>
-                      </div>
-                    </>
-                  )}
-                </div>
-              </div>
-
-              {/* Card Body */}
-              <div className="p-6">
-                <div className="text-[11px] font-mono text-[var(--text-dim)] uppercase tracking-wider mb-2">
-                  {item.category} • {item.division}
-                </div>
-
-                <h3 className="text-lg font-extrabold text-[var(--text-primary)] mb-3 leading-snug group-hover:text-[var(--gold)] transition-colors">
-                  {item.title}
-                </h3>
-
-                <p className="text-xs text-[var(--text-muted)] leading-relaxed mb-4">
-                  {item.headline}
-                </p>
-
-                <div className="p-3 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-xs text-[var(--text-primary)] mb-5">
-                  <div className="text-[10px] font-mono font-bold uppercase text-[var(--gold)] mb-1">
-                    Delivered Solution
-                  </div>
-                  <div className="text-[11px] leading-relaxed text-[var(--text-muted)]">
+                  <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-100 text-xs text-slate-700 leading-relaxed mb-5">
+                    <strong className="text-slate-900">Delivered: </strong>
                     {item.solution}
                   </div>
-                </div>
 
-                {/* Technology Pills */}
-                <div className="flex flex-wrap gap-1.5 mb-6">
-                  {item.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="text-[10px] font-mono px-2 py-0.5 rounded bg-[var(--bg-primary)] text-[var(--text-dim)] border border-[var(--border-subtle)]"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+                  {/* Technology Pills */}
+                  <div className="flex flex-wrap gap-1.5 mb-2">
+                    {item.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="text-[10px] font-medium px-2 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* Impact Metric Footer */}
-            <div className="p-4 px-6 border-t border-[var(--border-subtle)] bg-[var(--bg-primary)] flex items-center justify-between">
-              <div>
-                <div className="text-[10px] font-mono text-[var(--text-dim)] uppercase">Outcome</div>
-                <div className="text-xs font-bold" style={{ color: item.accent }}>
+              {/* Outcome Banner */}
+              <div className="p-4 px-6 bg-slate-50 border-t border-slate-100">
+                <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                  Measured Outcome
+                </div>
+                <div className="text-xs font-black text-emerald-600 mt-0.5">
                   {item.metrics}
                 </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Bottom Conversion Banner */}
-      <div
-        className="glass-card p-8 sm:p-10 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 border border-[var(--border-gold)]"
-      >
-        <div>
-          <span className="text-xs font-mono font-bold text-[var(--gold)] uppercase tracking-wider">
-            Ready to Scope Your Project?
-          </span>
-          <h3 className="text-xl sm:text-2xl font-extrabold text-[var(--text-primary)] mt-1">
-            Let's Engineer Your Solution
-          </h3>
-          <p className="text-xs sm:text-sm text-[var(--text-muted)] mt-1">
-            We review technical specifications, network requirements, or broadcast timelines with zero obligation.
-          </p>
+          ))}
         </div>
 
-        <button
-          onClick={() => scrollTo('contact')}
-          className="gold-glow-btn px-8 py-3.5 rounded-xl text-xs sm:text-sm font-bold flex-shrink-0 cursor-pointer"
-        >
-          Request Technical Assessment →
-        </button>
+        {/* CTA Banner (Brandstore Summer Offer Style) */}
+        <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
+          <div>
+            <span className="text-xs font-extrabold uppercase tracking-widest text-amber-400">
+              FREE TECHNICAL ASSESSMENT
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-black mt-2 leading-tight">
+              Have a Project in Mind?
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-300 mt-2 max-w-lg">
+              We review your existing infrastructure, application requirements, or broadcast timelines with zero obligation.
+            </p>
+          </div>
+
+          <button
+            onClick={() => scrollTo('contact')}
+            className="bg-gradient-to-r from-amber-500 to-amber-600 text-white px-8 py-4 rounded-xl text-sm font-bold shadow-lg shadow-amber-500/30 hover:scale-105 transition-all cursor-pointer whitespace-nowrap"
+          >
+            Request Free Assessment →
+          </button>
+        </div>
+
       </div>
-    </div>
+    </section>
   )
 }

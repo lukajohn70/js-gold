@@ -1,77 +1,69 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
 @import 'tailwindcss';
 
 @theme {
-  --color-navy: #07090E;
-  --color-navy-mid: #0D111A;
-  --color-navy-light: #131826;
-  --color-gold: #E5C07B;
-  --color-gold-light: #F3D079;
-  --color-gold-dim: rgba(229, 192, 123, 0.35);
-  --color-gold-glow: rgba(229, 192, 123, 0.15);
+  --color-primary: #0F172A;
+  --color-gold: #D97706;
+  --color-gold-light: #F59E0B;
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --font-display: 'Space Grotesk', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
 }
 
-/* ─── Dark mode (default - Cinematic Studio) ────────────────── */
-[data-theme="dark"] {
-  --bg-primary: #07090E;
-  --bg-secondary: #0D111A;
-  --bg-card: #111522;
-  --bg-surface: rgba(17, 21, 34, 0.75);
-  --bg-surface-hover: rgba(24, 30, 48, 0.9);
-  --bg-surface-mid: rgba(255, 255, 255, 0.05);
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-gold: rgba(229, 192, 123, 0.35);
-  --text-primary: #F8FAFC;
-  --text-muted: rgba(248, 250, 252, 0.65);
-  --text-dim: rgba(248, 250, 252, 0.4);
-  --gold: #E5C07B;
-  --gold-light: #F3D079;
-  --gold-glow: rgba(229, 192, 123, 0.15);
-  --gold-dim: rgba(229, 192, 123, 0.35);
-  --glass-bg: rgba(17, 21, 34, 0.65);
-  --glass-border: rgba(255, 255, 255, 0.09);
-  --nav-bg: rgba(7, 9, 14, 0.85);
-  --section-alt: rgba(13, 17, 26, 0.7);
-  --scrollbar-thumb: rgba(229, 192, 123, 0.3);
-  --scrollbar-thumb-hover: rgba(229, 192, 123, 0.6);
-  --selection-bg: rgba(229, 192, 123, 0.25);
-  --ambient-1: rgba(229, 192, 123, 0.08);
-  --ambient-2: rgba(60, 130, 255, 0.08);
-  --scanline: rgba(255, 255, 255, 0.005);
-  --grid-line: rgba(255, 255, 255, 0.03);
-}
-
-/* ─── Light mode (Clean Studio) ─────────────────────────────── */
+/* ─── Light Mode (Default - Clean Learnerium & Brandstore Style) ──── */
 [data-theme="light"] {
-  --bg-primary: #F8F9FC;
-  --bg-secondary: #EDF1F7;
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8FAFC;
   --bg-card: #FFFFFF;
-  --bg-surface: rgba(255, 255, 255, 0.85);
-  --bg-surface-hover: #FFFFFF;
-  --bg-surface-mid: rgba(0, 0, 0, 0.03);
-  --border-subtle: rgba(15, 23, 42, 0.08);
-  --border-gold: rgba(194, 143, 30, 0.3);
+  --bg-surface: rgba(255, 255, 255, 0.92);
+  --bg-surface-hover: #F8FAFC;
+  --border-subtle: #E2E8F0;
+  --border-gold: rgba(217, 119, 6, 0.35);
   --text-primary: #0F172A;
   --text-muted: #475569;
   --text-dim: #94A3B8;
-  --gold: #C28F1E;
-  --gold-light: #D9A426;
-  --gold-glow: rgba(194, 143, 30, 0.12);
-  --gold-dim: rgba(194, 143, 30, 0.35);
-  --glass-bg: rgba(255, 255, 255, 0.85);
-  --glass-border: rgba(15, 23, 42, 0.08);
-  --nav-bg: rgba(248, 249, 252, 0.88);
-  --section-alt: #F1F4F9;
-  --scrollbar-thumb: rgba(194, 143, 30, 0.3);
-  --scrollbar-thumb-hover: rgba(194, 143, 30, 0.6);
-  --selection-bg: rgba(194, 143, 30, 0.2);
-  --ambient-1: rgba(194, 143, 30, 0.05);
-  --ambient-2: rgba(30, 90, 220, 0.04);
-  --scanline: rgba(0, 0, 0, 0.006);
-  --grid-line: rgba(15, 23, 42, 0.04);
+  --gold: #D97706;
+  --gold-light: #F59E0B;
+  --gold-glow: rgba(245, 158, 11, 0.15);
+  --gold-dim: rgba(217, 119, 6, 0.25);
+  --glass-bg: rgba(255, 255, 255, 0.88);
+  --glass-border: rgba(226, 232, 240, 0.8);
+  --nav-bg: rgba(255, 255, 255, 0.92);
+  --section-alt: #F8FAFC;
+  --scrollbar-thumb: #CBD5E1;
+  --scrollbar-thumb-hover: #94A3B8;
+  --selection-bg: rgba(245, 158, 11, 0.2);
+  --ambient-1: rgba(245, 158, 11, 0.08);
+  --ambient-2: rgba(30, 58, 138, 0.06);
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+  --card-shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
+}
+
+/* ─── Dark Mode (Refined Luxury Navy) ─────────────────────────── */
+[data-theme="dark"] {
+  --bg-primary: #0A0E17;
+  --bg-secondary: #0F1626;
+  --bg-card: #151D30;
+  --bg-surface: rgba(21, 29, 48, 0.85);
+  --bg-surface-hover: #1A243C;
+  --border-subtle: rgba(255, 255, 255, 0.09);
+  --border-gold: rgba(245, 158, 11, 0.35);
+  --text-primary: #F8FAFC;
+  --text-muted: #94A3B8;
+  --text-dim: #64748B;
+  --gold: #F59E0B;
+  --gold-light: #FBBF24;
+  --gold-glow: rgba(245, 158, 11, 0.15);
+  --gold-dim: rgba(245, 158, 11, 0.3);
+  --glass-bg: rgba(21, 29, 48, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --nav-bg: rgba(10, 14, 23, 0.9);
+  --section-alt: #0D1321;
+  --scrollbar-thumb: rgba(245, 158, 11, 0.3);
+  --scrollbar-thumb-hover: rgba(245, 158, 11, 0.6);
+  --selection-bg: rgba(245, 158, 11, 0.25);
+  --ambient-1: rgba(245, 158, 11, 0.08);
+  --ambient-2: rgba(30, 58, 138, 0.15);
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  --card-shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
 }
 
 *, *::before, *::after {
@@ -92,7 +84,7 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 ::selection {
@@ -101,68 +93,90 @@ body {
 }
 
 /* Scrollbar */
-::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover); }
 
-/* Premium Studio Buttons */
+/* Buttons */
 .gold-glow-btn {
   background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-  color: #07090E;
+  color: #FFFFFF;
   font-weight: 700;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 20px var(--gold-glow), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  box-shadow: 0 4px 14px var(--gold-glow);
   position: relative;
   overflow: hidden;
 }
 
 .gold-glow-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px var(--gold-dim), 0 0 40px var(--gold-glow), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 24px var(--gold-dim);
 }
 
 .glass-btn {
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   color: var(--text-primary);
   font-weight: 600;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
 .glass-btn:hover {
-  background: var(--bg-surface-hover);
   border-color: var(--border-gold);
   color: var(--gold);
   transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2), 0 0 15px var(--gold-glow);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* Glass cards & Bento */
+/* Learnerium & Brandstore Style Cards */
+.pro-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 1.25rem;
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pro-card:hover {
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-4px);
+  border-color: var(--border-gold);
+}
+
 .glass-card {
   background: var(--bg-card);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
   border: 1px solid var(--border-subtle);
-  border-radius: 16px;
+  border-radius: 1.25rem;
+  box-shadow: var(--card-shadow);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-card:hover {
-  border-color: rgba(229, 192, 123, 0.3);
-  box-shadow: 0 12px 35px -10px rgba(0, 0, 0, 0.3), 0 0 30px var(--gold-glow);
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-4px);
+  border-color: var(--border-gold);
+}
+
+/* Floating Badges (Learnerium Style) */
+.floating-glass-badge {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.12), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border-radius: 1rem;
 }
 
 .section-label {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--gold);
 }
@@ -182,63 +196,24 @@ body {
   width: 100%;
   background: var(--bg-primary);
   border: 1px solid var(--border-subtle);
-  border-radius: 10px;
+  border-radius: 0.75rem;
   padding: 12px 16px;
   color: var(--text-primary);
   font-family: inherit;
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   transition: all 0.2s ease;
   outline: none;
 }
 
 .cyber-input:focus {
   border-color: var(--gold);
-  box-shadow: 0 0 0 2px var(--gold-glow);
+  box-shadow: 0 0 0 3px var(--gold-glow);
 }
-
-/* Animated Infinite Marquee */
-@keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
-}
-
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee 35s linear infinite;
-}
-
-.marquee-track:hover {
-  animation-play-state: paused;
-}
-
-/* Audio VU Meter Animation */
-@keyframes vuPulse1 {
-  0%, 100% { height: 25%; }
-  50% { height: 85%; }
-}
-@keyframes vuPulse2 {
-  0%, 100% { height: 45%; }
-  50% { height: 95%; }
-}
-@keyframes vuPulse3 {
-  0%, 100% { height: 15%; }
-  50% { height: 60%; }
-}
-@keyframes vuPulse4 {
-  0%, 100% { height: 35%; }
-  50% { height: 90%; }
-}
-
-.vu-bar-1 { animation: vuPulse1 0.7s ease-in-out infinite; }
-.vu-bar-2 { animation: vuPulse2 0.5s ease-in-out infinite 0.1s; }
-.vu-bar-3 { animation: vuPulse3 0.9s ease-in-out infinite 0.2s; }
-.vu-bar-4 { animation: vuPulse4 0.6s ease-in-out infinite 0.15s; }
 
 /* Pulse dot */
 @keyframes pulseDot {
   0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.4); opacity: 0.5; }
+  50% { transform: scale(1.35); opacity: 0.5; }
 }
 
 .pulse-dot {
@@ -248,8 +223,8 @@ body {
 /* Section transitions */
 .section-fade {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .section-visible {
@@ -259,7 +234,7 @@ body {
 
 .fade-in-on-load {
   opacity: 0;
-  animation: fadeInMain 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.05s forwards;
+  animation: fadeInMain 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.05s forwards;
 }
 
 @keyframes fadeInMain {

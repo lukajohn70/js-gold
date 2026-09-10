@@ -40,112 +40,90 @@ export default function Nav({ activePage, theme, onToggleTheme, onOpenServices }
   }
 
   return (
-    <header
-      className="fixed top-0 left-0 right-0 z-50"
-      style={{
-        background: 'var(--nav-bg)',
-        backdropFilter: 'blur(25px)',
-        WebkitBackdropFilter: 'blur(25px)',
-        borderBottom: '1px solid var(--border-subtle)',
-        boxShadow: '0 1px 0 var(--gold-glow)',
-      }}
-    >
-      <div className="px-4 sm:px-6 md:px-8" style={{ maxWidth: 1280, margin: '0 auto', height: 68, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 shadow-sm transition-colors">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
 
-        {/* Logo */}
-        <button onClick={() => scrollTo('home')} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 }}>
+        {/* Logo (Learnerium Style) */}
+        <button
+          onClick={() => scrollTo('home')}
+          className="flex items-center gap-3 bg-transparent border-none cursor-pointer p-0 group text-left"
+        >
           <img
             src={logoSrc}
             alt="JS-GOLD Logo"
-            style={{
-              width: 36,
-              height: 36,
-              borderRadius: 8,
-              objectFit: 'contain',
-              flexShrink: 0,
-              boxShadow: theme === 'dark' ? '0 0 16px rgba(212,175,55,0.25)' : 'none',
-              background: theme === 'light' ? '#ffffff' : 'transparent',
-              border: theme === 'light' ? '1px solid var(--border-subtle)' : 'none',
-            }}
+            className="w-10 h-10 object-contain rounded-xl transition group-hover:scale-105 shadow-sm"
           />
-          <div className="text-left" style={{ lineHeight: 1 }}>
-            <div style={{ fontSize: '0.84rem', fontWeight: 800, letterSpacing: '0.08em', color: 'var(--gold)', textTransform: 'uppercase' }}>JS-GOLD</div>
-            <div style={{ fontSize: '0.57rem', fontWeight: 500, letterSpacing: '0.14em', color: 'var(--text-dim)', textTransform: 'uppercase', marginTop: 2 }}>Digital World</div>
+          <div className="leading-tight">
+            <div className="text-base font-black tracking-tight text-slate-900 dark:text-white uppercase">
+              JS-GOLD
+            </div>
+            <div className="text-[10px] font-extrabold uppercase tracking-widest text-amber-600 dark:text-amber-400">
+              Digital World
+            </div>
           </div>
         </button>
 
-        {/* Nav links (desktop) */}
-        <nav className="hidden md:flex items-center gap-1">
+        {/* Nav links (Desktop - Learnerium Style) */}
+        <nav className="hidden md:flex items-center space-x-8">
           {navLinks.map((link) => {
             const isActive = activePage === link.id
             return (
               <button
                 key={link.id}
                 onClick={() => handleLinkClick(link)}
-                style={{
-                  background: 'none', border: 'none', cursor: 'pointer',
-                  padding: '8px 14px', fontSize: '0.78rem',
-                  fontWeight: isActive ? 700 : 500, letterSpacing: '0.03em',
-                  color: isActive ? 'var(--gold)' : 'var(--text-muted)',
-                  position: 'relative', transition: 'color 0.2s ease',
-                  fontFamily: 'inherit', borderRadius: 6,
-                }}
-                onMouseEnter={(e) => { if (!isActive) (e.currentTarget as HTMLElement).style.color = 'var(--text-primary)' }}
-                onMouseLeave={(e) => { if (!isActive) (e.currentTarget as HTMLElement).style.color = 'var(--text-muted)' }}
+                className={`text-sm font-bold transition-colors duration-200 relative group py-1 cursor-pointer bg-transparent border-none ${
+                  isActive
+                    ? 'text-amber-600 dark:text-amber-400'
+                    : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
+                }`}
               >
                 {link.label}
-                {/* Gradient underline */}
-                <span style={{
-                  position: 'absolute', bottom: 2, left: '50%', transform: 'translateX(-50%)',
-                  width: isActive ? 14 : 0, height: 2,
-                  background: 'linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold))',
-                  borderRadius: 1,
-                  boxShadow: isActive ? '0 0 6px var(--gold-glow)' : 'none',
-                  transition: 'width 0.3s ease',
-                }} />
+                <span
+                  className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-amber-500 to-amber-600 transition-all duration-300 ${
+                    isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}
+                />
               </button>
             )
           })}
         </nav>
 
-        {/* Right controls */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        {/* Right Action Controls */}
+        <div className="flex items-center gap-3">
           {/* Theme toggle */}
           <button
             onClick={onToggleTheme}
-            className="theme-toggle"
+            className="w-10 h-10 rounded-xl flex items-center justify-center border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-amber-600 cursor-pointer transition shadow-sm"
             title={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
-            aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+            aria-label="Toggle theme"
           >
             {theme === 'light' ? (
-              <svg width="16" height="16" viewBox="0 0 15 15" fill="none">
-                <path d="M13 8.5a5.5 5.5 0 01-7-7 6 6 0 100 14 5.5 5.5 0 007-7z" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+              <svg width="18" height="18" viewBox="0 0 15 15" fill="none">
+                <path d="M13 8.5a5.5 5.5 0 01-7-7 6 6 0 100 14 5.5 5.5 0 007-7z" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
               </svg>
             ) : (
-              <svg width="16" height="16" viewBox="0 0 15 15" fill="none">
-                <circle cx="7.5" cy="7.5" r="2.8" stroke="currentColor" strokeWidth="1.3" />
-                <path d="M7.5 1.5v1.8M7.5 11.7v1.8M1.5 7.5h1.8M11.7 7.5h1.8M3.4 3.4l1.3 1.3M10.3 10.3l1.3 1.3M10.3 4.7l1.3-1.3M3.4 11.6l1.3-1.3" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+              <svg width="18" height="18" viewBox="0 0 15 15" fill="none">
+                <circle cx="7.5" cy="7.5" r="2.8" stroke="currentColor" strokeWidth="1.4" />
+                <path d="M7.5 1.5v1.8M7.5 11.7v1.8M1.5 7.5h1.8M11.7 7.5h1.8M3.4 3.4l1.3 1.3M10.3 10.3l1.3 1.3M10.3 4.7l1.3-1.3M3.4 11.6l1.3-1.3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
               </svg>
             )}
           </button>
 
-          {/* CTA — with ripple */}
+          {/* CTA Button (Learnerium Style) */}
           <button
             onClick={(e) => { attachRipple(e); scrollTo('contact') }}
-            className="glass-btn ripple hidden sm:inline-flex"
-            style={{ padding: '9px 18px', borderRadius: 8, fontSize: '0.76rem', cursor: 'pointer', fontFamily: 'inherit' }}
+            className="hidden sm:inline-flex bg-gradient-to-r from-amber-500 to-amber-600 text-white px-6 py-2.5 rounded-xl text-sm font-bold shadow-md shadow-amber-500/20 hover:scale-105 hover:shadow-lg transition-all cursor-pointer"
           >
-            Free Consultation
+            Free Consultation →
           </button>
 
-          {/* Mobile hamburger menu toggle */}
+          {/* Mobile hamburger */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg"
-            style={{ background: 'var(--bg-glass)', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)' }}
-            aria-label="Toggle menu"
+            className="md:hidden p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200"
+            aria-label="Toggle navigation menu"
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
               {mobileMenuOpen ? (
                 <path d="M18 6L6 18M6 6l12 12" />
               ) : (
@@ -154,32 +132,24 @@ export default function Nav({ activePage, theme, onToggleTheme, onOpenServices }
             </svg>
           </button>
         </div>
+
       </div>
 
-      {/* Mobile dropdown menu */}
+      {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div
-          className="md:hidden px-4 py-4"
-          style={{
-            background: 'var(--nav-bg)',
-            borderBottom: '1px solid var(--border-subtle)',
-            backdropFilter: 'blur(25px)',
-          }}
-        >
-          <div className="flex flex-col gap-2">
+        <div className="md:hidden px-4 py-6 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-xl">
+          <div className="flex flex-col space-y-3">
             {navLinks.map((link) => {
               const isActive = activePage === link.id
               return (
                 <button
                   key={link.id}
                   onClick={() => handleLinkClick(link)}
-                  className="text-left px-3 py-2.5 rounded-lg text-sm font-medium transition-colors"
-                  style={{
-                    color: isActive ? 'var(--gold)' : 'var(--text-primary)',
-                    background: isActive ? 'var(--gold-glow)' : 'transparent',
-                    border: 'none',
-                    cursor: 'pointer',
-                  }}
+                  className={`text-left px-4 py-3 rounded-xl text-sm font-bold transition ${
+                    isActive
+                      ? 'bg-amber-50 text-amber-700 dark:bg-amber-950/40 dark:text-amber-400'
+                      : 'text-slate-700 dark:text-slate-200 hover:bg-slate-50'
+                  }`}
                 >
                   {link.label}
                 </button>
@@ -191,8 +161,7 @@ export default function Nav({ activePage, theme, onToggleTheme, onOpenServices }
                 attachRipple(e)
                 scrollTo('contact')
               }}
-              className="gold-glow-btn mt-2 py-2.5 px-4 text-center rounded-lg text-sm font-semibold"
-              style={{ border: 'none', cursor: 'pointer' }}
+              className="w-full mt-2 bg-gradient-to-r from-amber-500 to-amber-600 text-white py-3 px-4 rounded-xl text-sm font-bold text-center shadow"
             >
               Free Consultation →
             </button>
