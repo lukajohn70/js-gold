@@ -26,6 +26,8 @@ const CompanyProfileSection = lazy(() => import('./components/CompanyProfileSect
 const ServicesSection = lazy(() => import('./components/ServicesSection'))
 const IndustriesSection = lazy(() => import('./components/IndustriesSection'))
 const PortfolioSection = lazy(() => import('./components/PortfolioSection'))
+const BroadcastShowreel = lazy(() => import('./components/BroadcastShowreel'))
+const ProjectConfigurator = lazy(() => import('./components/ProjectConfigurator'))
 const InsightsSection = lazy(() => import('./components/InsightsSection'))
 const TestimonialsSection = lazy(() => import('./components/TestimonialsSection'))
 const ContactSection = lazy(() => import('./components/ContactSection'))
@@ -136,12 +138,14 @@ export default function App() {
 
       <main className="fade-in-on-load" style={{ position: 'relative', zIndex: 1 }}>
 
-        {/* HOME — hero + trust bar + divisions overview + industries teaser */}
+        {/* HOME — hero + trust bar + divisions bento + live broadcast studio + industries explorer */}
         <div id="home">
           <HeroSection onOpenServices={openServices} />
           <TrustBar />
           <AtAGlance onOpenServices={openServices} />
+          <MarqueeRibbon />
           <Suspense fallback={<SectionFallback />}>
+            <BroadcastShowreel />
             <IndustriesSection />
           </Suspense>
         </div>
@@ -159,6 +163,11 @@ export default function App() {
             <PortfolioSection />
           </Suspense>
         </div>
+
+        {/* CONFIGURATOR */}
+        <Suspense fallback={<SectionFallback />}>
+          <ProjectConfigurator />
+        </Suspense>
 
         {/* INSIGHTS */}
         <div id="insights">
@@ -183,6 +192,7 @@ export default function App() {
       </main>
 
       <Footer theme={theme} onOpenServices={openServices} />
+
 
       {/* Services sub-page overlay */}
       {subPage === 'services' && (
