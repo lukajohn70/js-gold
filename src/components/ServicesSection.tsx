@@ -39,8 +39,8 @@ const divisions: ServiceDivision[] = [
     services: [
       {
         name: 'Custom Web & Mobile App Development',
-        description: 'Bespoke web applications built on Laravel and cross-platform mobile apps using Flutter. Engineered for performance, security, and scalability.',
-        features: ['Enterprise web portals & management dashboards', 'Native-feel iOS & Android apps (Flutter)', 'Robust API development & 3rd-party integrations', 'Database architecture & performance tuning'],
+        description: 'Bespoke web applications built on React and Laravel, and cross-platform mobile apps using Flutter. Engineered for performance, security, and scalability.',
+        features: ['Enterprise web portals & modern dashboards (React & Next.js)', 'Native-feel iOS & Android apps (Flutter)', 'Robust API development & 3rd-party integrations', 'Database architecture & performance tuning'],
       },
       {
         name: 'Campus & Enterprise Network Engineering',

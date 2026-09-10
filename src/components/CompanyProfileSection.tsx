@@ -2,11 +2,11 @@ import { scrollTo } from '../utils'
 
 const teamMembers = [
   {
-    name: 'John Luka',
-    role: 'Technical Director & Lead Architect',
-    specialty: 'Enterprise Software & Systems Architecture',
-    bio: 'Oversees technology architecture, cross-platform app engineering (Laravel & Flutter), and mission-critical network deployments with over 5 years of verified field delivery.',
-    avatar: 'JL',
+    name: 'Technical Director & Lead Architect',
+    role: 'Chief Technology Direction',
+    specialty: 'Enterprise Software (React, Laravel, Flutter) & Systems Architecture',
+    bio: 'Oversees full-stack systems architecture, modern frontend & backend engineering (React, Laravel, Flutter), and mission-critical network deployments with over 5 years of verified field delivery.',
+    avatar: 'TD',
     accent: 'bg-amber-100 text-amber-800 border-amber-300',
   },
   {
@@ -76,7 +76,7 @@ const comparison = [
   {
     feature: 'Software & Visual Design',
     fragmented: 'Programmers build clunky UIs; designers build code that breaks',
-    jsgold: 'UI/UX designers collaborate directly with Laravel and Flutter engineers',
+    jsgold: 'UI/UX designers collaborate directly with React, Laravel, and Flutter engineers',
   },
   {
     feature: 'Communication & Overhead',

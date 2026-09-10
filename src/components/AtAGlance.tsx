@@ -13,7 +13,7 @@ const divisions = [
     image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&auto=format&fit=crop&q=80',
     description: 'Custom web and mobile applications engineered for high concurrency, paired with enterprise-grade MikroTik campus networking.',
     features: [
-      'Bespoke Web Platforms (Laravel & React)',
+      'Bespoke Web Platforms (React & Laravel)',
       'Cross-Platform Mobile Apps (Flutter)',
       'MikroTik Hotspot Gateways & User-Manager',
       'Bandwidth QoS & Campus Fiber Backbones',
@@ -94,11 +94,14 @@ export default function AtAGlance({ onOpenServices }: Props) {
             >
               <div>
                 {/* Photographic Header */}
-                <div className="relative h-56 overflow-hidden">
+                <div className="relative h-56 overflow-hidden bg-slate-900">
                   <img
                     src={div.image}
                     alt={div.name}
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none'
+                    }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
 

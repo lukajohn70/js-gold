@@ -22,7 +22,7 @@ export default function Footer({ theme, onOpenServices }: FooterProps) {
   ]
 
   const divisionLinks = [
-    { label: 'Software Engineering (Laravel & Flutter)', action: () => onOpenServices ? onOpenServices() : scrollTo('divisions') },
+    { label: 'Software Engineering (React, Laravel & Flutter)', action: () => onOpenServices ? onOpenServices() : scrollTo('divisions') },
     { label: 'Network Infrastructure (MikroTik Core)', action: () => onOpenServices ? onOpenServices() : scrollTo('divisions') },
     { label: 'Broadcast & AV Systems (vMix Live)', action: () => onOpenServices ? onOpenServices() : scrollTo('divisions') },
     { label: 'Creative Media & UI/UX Design', action: () => onOpenServices ? onOpenServices() : scrollTo('divisions') },

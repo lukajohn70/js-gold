@@ -76,10 +76,10 @@ const portfolioItems: PortfolioItem[] = [
     title: 'Cross-Platform Financial Services Mobile App',
     category: 'Software & Apps',
     division: 'Software & Networking',
-    image: 'https://images.unsplash.com/photo-1556742049-0a67e557224f?w=800&auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&auto=format&fit=crop&q=80',
     headline: 'Biometric consumer and merchant mobile application with offline transaction caching for unstable network zones.',
-    solution: 'Built with Flutter for high performance across Android and iOS devices, communicating via encrypted payloads to an API gateway.',
-    technologies: ['Flutter', 'Dart', 'State Management', 'REST API', 'Figma UI/UX'],
+    solution: 'Built with React Native & Flutter for high performance across Android and iOS devices, communicating via encrypted payloads to an API gateway.',
+    technologies: ['React Native', 'Flutter', 'Dart', 'REST API', 'Figma UI/UX'],
     metrics: '4.8★ App Store Rating • Sub-second Transaction Times',
     badgeColor: 'bg-blue-100 text-blue-800 border-blue-200',
   },
@@ -153,13 +153,16 @@ export default function PortfolioSection() {
             >
               <div>
                 {/* Photo Thumbnail */}
-                <div className="relative h-52 overflow-hidden">
+                <div className="relative h-52 overflow-hidden bg-slate-900">
                   <img
                     src={item.image}
                     alt={item.title}
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none'
+                    }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
 
                   <div className="absolute top-4 left-4">
                     <span className={`text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full border shadow-sm ${item.badgeColor}`}>
