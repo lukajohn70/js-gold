@@ -7,10 +7,9 @@ interface ServiceDivision {
   title: string
   category: string
   tagline: string
+  image: string
   accent: string
-  glow: string
   tags: string[]
-  icon: JSX.Element
   services: {
     name: string
     description: string
@@ -24,33 +23,40 @@ const divisions: ServiceDivision[] = [
     division: '01',
     title: 'Software & Networking',
     category: 'Engineering & Infrastructure',
-    tagline: 'Custom applications, mission-critical network engineering, and enterprise infrastructure audits.',
-    accent: '#D4AF37',
-    glow: 'rgba(212,175,55,0.12)',
-    tags: ['Laravel', 'Flutter', 'React', 'MikroTik RouterOS', 'Bandwidth QoS', 'REST/GraphQL'],
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="2" width="20" height="8" rx="2" ry="2" />
-        <rect x="2" y="14" width="20" height="8" rx="2" ry="2" />
-        <line x1="6" y1="6" x2="6.01" y2="6" />
-        <line x1="6" y1="18" x2="6.01" y2="18" />
-      </svg>
-    ),
+    tagline: 'Custom web and mobile applications engineered for high concurrency, paired with campus-wide MikroTik network routing.',
+    image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=1000&auto=format&fit=crop&q=80',
+    accent: '#3B82F6',
+    tags: ['React', 'Next.js', 'Laravel', 'Flutter', 'MikroTik RouterOS', 'Bandwidth QoS', 'REST APIs'],
     services: [
       {
         name: 'Custom Web & Mobile App Development',
-        description: 'Bespoke web applications built on React and Laravel, and cross-platform mobile apps using Flutter. Engineered for performance, security, and scalability.',
-        features: ['Enterprise web portals & modern dashboards (React & Next.js)', 'Native-feel iOS & Android apps (Flutter)', 'Robust API development & 3rd-party integrations', 'Database architecture & performance tuning'],
+        description: 'Bespoke web applications built on React and Laravel, paired with cross-platform mobile apps using Flutter. Engineered for speed, security, and scalability.',
+        features: [
+          'Enterprise web portals & modern dashboards (React & Next.js)',
+          'Native-feel iOS & Android apps (Flutter & Dart)',
+          'Robust API development & 3rd-party integrations',
+          'Database architecture & performance caching',
+        ],
       },
       {
         name: 'Campus & Enterprise Network Engineering',
         description: 'Comprehensive network design, installation, and optimization. We specialize in robust MikroTik hotspot routing and structured traffic distribution.',
-        features: ['MikroTik hotspot routing & captive portal gateways', 'Bandwidth management, QoS, and fair-use traffic shaping', 'Secure link architecture, VLAN segmentation, and VPNs', 'Wireless backhaul & campus fiber infrastructure'],
+        features: [
+          'MikroTik hotspot routing & captive portal gateways',
+          'Bandwidth management, QoS & fair-use traffic shaping',
+          'Secure link architecture, VLAN segmentation & VPNs',
+          'Wireless backhaul & campus fiber infrastructure',
+        ],
       },
       {
-        name: 'Infrastructure Audits & Assessments',
+        name: 'Infrastructure Audits & Security Assessments',
         description: 'In-depth diagnostic audits of existing IT environments to identify bottlenecks, security vulnerabilities, and reliability risks.',
-        features: ['Network throughput & latency bottleneck analysis', 'Security posture & firewall hardening reviews', 'Hardware lifecycle & capacity planning', 'Documented remediation roadmaps'],
+        features: [
+          'Network throughput & latency bottleneck analysis',
+          'Security posture & firewall hardening reviews',
+          'Hardware lifecycle & capacity planning',
+          'Documented remediation blueprints with cost estimates',
+        ],
       },
     ],
   },
@@ -58,32 +64,41 @@ const divisions: ServiceDivision[] = [
     id: 'broadcast-av',
     division: '02',
     title: 'Broadcast & AV Systems',
-    category: 'Live Production & Audio Engineering',
-    tagline: 'Broadcast-grade live streaming, multi-camera setups, and crystal-clear audio engineering.',
-    accent: '#50C8FF',
-    glow: 'rgba(80,200,255,0.12)',
-    tags: ['vMix', 'Hardware Encoders', 'SRT/RTMP', 'Dante Audio', 'Multi-Camera', 'Sound Design'],
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M23 7l-7 5 7 5V7z" />
-        <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
-      </svg>
-    ),
+    category: 'Live Production & Sound',
+    tagline: 'Broadcast-grade live streaming, multi-camera setups, hardware encoding rigs, and crystal-clear sound engineering.',
+    image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1000&auto=format&fit=crop&q=80',
+    accent: '#D97706',
+    tags: ['vMix 4K Pro', 'Hardware Encoders', 'SRT / RTMP', 'Dante AoIP', 'Multicam Production', 'Sound Design'],
     services: [
       {
         name: 'Live-Streaming Production & Multicam',
         description: 'End-to-end multi-camera production for conferences, institutional ceremonies, concerts, and hybrid events.',
-        features: ['Multi-camera switching & live director control', 'Real-time graphic overlays, lower-thirds & live scoreboards', 'Simultaneous multi-destination streaming (YouTube, social, custom CDNs)', 'Dedicated bonding routers for failover network redundancy'],
+        features: [
+          'Multi-camera switching & live director control',
+          'Real-time graphic overlays, lower-thirds & live scoreboards',
+          'Multi-destination simultaneous streaming (YouTube, social, CDNs)',
+          'Dedicated bonding routers for failover internet redundancy',
+        ],
       },
       {
         name: 'Hardware Encoding & Low-Latency Streaming',
         description: 'Professional video encoding pipelines that ensure zero dropouts and pristine 1080p60 / 4K fidelity.',
-        features: ['Ultra-low-latency SRT and RTMP video delivery', 'Dedicated rackmount and portable hardware encoders', 'Remote guest feeds and live video callers', 'ISO recording of each camera angle for post-production'],
+        features: [
+          'Ultra-low-latency SRT and RTMP video delivery',
+          'Dedicated rackmount and portable hardware encoders',
+          'Remote guest feeds and live interactive video callers',
+          'ISO recording of each camera angle for post-production',
+        ],
       },
       {
         name: 'Sound Engineering & Audio Production',
         description: 'From live event PA mixing to custom musical jingles and commercial voiceover mastering.',
-        features: ['vMix audio bus routing & digital console management', 'Acoustic tuning, EQ balancing & feedback suppression', 'Custom radio/TV jingles, brand anthems & sound design', 'Commercial podcast & voiceover audio mastering'],
+        features: [
+          'vMix audio bus routing & digital console management',
+          'Acoustic tuning, EQ balancing & feedback suppression',
+          'Custom radio/TV jingles, brand anthems & sound design',
+          'Commercial podcast & voiceover audio mastering',
+        ],
       },
     ],
   },
@@ -91,33 +106,41 @@ const divisions: ServiceDivision[] = [
     id: 'creative-media',
     division: '03',
     title: 'Creative Media & Design',
-    category: 'Visual Storytelling & Brand Identity',
-    tagline: 'High-impact videography, photography, motion design, and user interface systems.',
-    accent: '#A78BFA',
-    glow: 'rgba(167,139,250,0.12)',
-    tags: ['DaVinci Resolve', '4K Cinematography', 'Figma UI/UX', 'Motion Graphics', 'Brand Identity'],
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <polygon points="12 2 2 7 12 12 22 7 12 2" />
-        <polyline points="2 17 12 22 22 17" />
-        <polyline points="2 12 12 17 22 12" />
-      </svg>
-    ),
+    category: 'Visual Storytelling & Branding',
+    tagline: 'High-impact videography, photography, motion design, DaVinci Resolve color grading, and user interface systems.',
+    image: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=1000&auto=format&fit=crop&q=80',
+    accent: '#8B5CF6',
+    tags: ['4K Cinematography', 'DaVinci Resolve', 'After Effects', 'Figma UI/UX', 'Drone Aerials', 'Brand Systems'],
     services: [
       {
         name: 'Professional Video & Photo Coverage',
         description: 'Cinematic visual documentation for institutions, brands, corporate milestones, and private functions.',
-        features: ['4K cinematic camera packages with prime lenses', 'Aerial drone footage by certified operators', 'High-resolution corporate and architectural photography', 'Documentary and promotional event highlight reels'],
+        features: [
+          '4K cinematic camera packages with prime lenses',
+          'Aerial drone footage by certified operators',
+          'High-resolution corporate and architectural photography',
+          'Documentary and promotional event highlight reels',
+        ],
       },
       {
         name: 'Creative Video Editing & Post-Production',
         description: 'Transforming raw footage into polished, engaging visual narratives that captivate audiences.',
-        features: ['Color grading in DaVinci Resolve with film-emulation palettes', 'Custom motion graphics, intros & animated kinetic typography', 'Short-form social cuts (Reels, TikTok) and long-form documentaries', 'Seamless audio sweetening, foley & music scoring'],
+        features: [
+          'Color grading in DaVinci Resolve with film-emulation palettes',
+          'Custom motion graphics, intros & kinetic typography',
+          'Short-form social cuts (Reels, TikTok) and long-form documentaries',
+          'Seamless audio sweetening, foley & music scoring',
+        ],
       },
       {
         name: 'Graphics & UI/UX Design',
         description: 'Compelling brand aesthetics and digital interfaces designed with human-centric ergonomics.',
-        features: ['Complete visual brand identity systems and guidelines', 'Wireframing, interactive prototyping & design systems in Figma', 'Marketing collaterals, pitch decks, and digital banners', 'UI/UX redesigns for web and mobile platforms'],
+        features: [
+          'Complete visual brand identity systems and guidelines',
+          'Wireframing, interactive prototyping & design systems in Figma',
+          'Marketing collaterals, pitch decks, and digital banners',
+          'UI/UX redesigns for web and mobile platforms',
+        ],
       },
     ],
   },
@@ -125,122 +148,115 @@ const divisions: ServiceDivision[] = [
 
 export default function ServicesSection() {
   const [selectedDivision, setSelectedDivision] = useState<string>(divisions[0].id)
-
   const activeDiv = divisions.find((d) => d.id === selectedDivision) || divisions[0]
 
   return (
-    <div id="services-content" className="px-4 sm:px-6 md:px-8 py-12 md:py-16" style={{ maxWidth: 1280, margin: '0 auto' }}>
-      {/* Header */}
-      <div className="text-center max-w-2xl mx-auto mb-12">
-        <div className="section-label" style={{ marginBottom: 12 }}>◆ &nbsp; Comprehensive Capabilities</div>
-        <h2 style={{ fontSize: 'clamp(1.8rem, 2.6vw, 2.6rem)', fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--text-primary)', margin: '0 0 14px' }}>
+    <section id="services-content" className="py-12 md:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Section Header */}
+      <div className="text-center max-w-3xl mx-auto mb-12">
+        <div className="section-label mb-3">
+          <span>◆</span>
+          <span>COMPREHENSIVE CAPABILITIES</span>
+        </div>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-slate-900">
           Built for Impact. Engineered to Last.
         </h2>
-        <p style={{ fontSize: '0.92rem', color: 'var(--text-muted)', margin: 0, lineHeight: 1.7 }}>
+        <p className="text-base text-slate-600 mt-3 leading-relaxed">
           Our services span three interconnected disciplines. We can handle a single specialized task or coordinate a cross-division turnkey project.
         </p>
       </div>
 
-      {/* Division Selector Tabs */}
-      <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
+      {/* Division Selector Tabs (Learnerium Style) */}
+      <div className="flex flex-wrap items-center justify-center gap-3 mb-10">
         {divisions.map((div) => {
           const isSelected = div.id === selectedDivision
           return (
             <button
               key={div.id}
               onClick={() => setSelectedDivision(div.id)}
-              className="px-5 py-3 rounded-xl font-semibold text-sm transition-all flex items-center gap-3 cursor-pointer"
-              style={{
-                background: isSelected ? div.glow : 'var(--bg-card)',
-                border: isSelected ? `2px solid ${div.accent}` : '1px solid var(--border-subtle)',
-                color: isSelected ? div.accent : 'var(--text-muted)',
-                boxShadow: isSelected ? `0 4px 20px ${div.glow}` : 'none',
-              }}
+              className={`px-5 py-3 rounded-2xl font-extrabold text-sm transition-all cursor-pointer flex items-center gap-2.5 shadow-sm ${
+                isSelected
+                  ? 'bg-slate-900 text-white shadow-md scale-105'
+                  : 'bg-white text-slate-600 border border-slate-200 hover:border-slate-300 hover:text-slate-900'
+              }`}
             >
-              <div style={{ color: isSelected ? div.accent : 'var(--text-dim)' }}>
-                {div.icon}
-              </div>
-              <div className="text-left">
-                <div style={{ fontSize: '0.68rem', textTransform: 'uppercase', letterSpacing: '0.08em', opacity: 0.8 }}>Division {div.division}</div>
-                <div style={{ fontSize: '0.9rem', fontWeight: 700 }}>{div.title}</div>
-              </div>
+              <span
+                className="w-2.5 h-2.5 rounded-full"
+                style={{ background: div.accent }}
+              />
+              <span>Division {div.division}: {div.title}</span>
             </button>
           )
         })}
       </div>
 
-      {/* Active Division Showcase */}
-      <div
-        className="glass-card p-6 sm:p-8 md:p-10 rounded-2xl mb-12"
-        style={{
-          borderTop: `4px solid ${activeDiv.accent}`,
-          background: 'var(--bg-card)',
-        }}
-      >
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-8 border-b border-[var(--border-subtle)] mb-8">
-          <div>
-            <div className="flex items-center gap-3 mb-2">
-              <span style={{ fontSize: '0.75rem', fontWeight: 800, color: activeDiv.accent, letterSpacing: '0.1em' }}>
-                DIVISION {activeDiv.division}
-              </span>
-              <span style={{ color: 'var(--border-subtle)' }}>•</span>
-              <span style={{ fontSize: '0.78rem', color: 'var(--text-dim)', fontWeight: 600 }}>
-                {activeDiv.category}
-              </span>
-            </div>
-            <h3 style={{ fontSize: 'clamp(1.5rem, 2.2vw, 2.2rem)', fontWeight: 800, color: 'var(--text-primary)', margin: '0 0 10px' }}>
+      {/* Active Division Photographic Showcase Card */}
+      <div className="pro-card bg-white p-6 sm:p-10 rounded-3xl mb-12 overflow-hidden">
+        {/* Banner with Photographic Header & Scrim */}
+        <div className="relative h-64 sm:h-72 rounded-2xl overflow-hidden mb-8 bg-slate-900 shadow-md">
+          <img
+            src={activeDiv.image}
+            alt={activeDiv.title}
+            className="w-full h-full object-cover object-center"
+            onError={(e) => { e.currentTarget.style.display = 'none' }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/50 to-transparent pointer-events-none" />
+
+          <div className="absolute bottom-6 left-6 right-6 text-white">
+            <span className="text-[11px] font-extrabold uppercase tracking-widest text-amber-400 bg-amber-500/20 border border-amber-400/30 px-3 py-1 rounded-full">
+              Division {activeDiv.division} &bull; {activeDiv.category}
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-black tracking-tight mt-3">
               {activeDiv.title}
             </h3>
-            <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', maxWidth: 650, margin: 0, lineHeight: 1.7 }}>
+            <p className="text-xs sm:text-sm text-slate-200 mt-1 max-w-2xl leading-relaxed">
               {activeDiv.tagline}
             </p>
           </div>
-
-          <div className="flex flex-wrap gap-2 lg:max-w-xs">
-            {activeDiv.tags.map((tag) => (
-              <span
-                key={tag}
-                style={{
-                  fontSize: '0.72rem',
-                  fontWeight: 600,
-                  padding: '4px 10px',
-                  borderRadius: 6,
-                  background: 'var(--bg-surface)',
-                  color: 'var(--text-primary)',
-                  border: '1px solid var(--border-subtle)',
-                }}
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
         </div>
 
-        {/* Detailed Service Offerings Grid */}
+        {/* Tech Stack Pills Strip */}
+        <div className="flex flex-wrap items-center gap-2 mb-8 pb-6 border-b border-slate-100">
+          <span className="text-xs font-bold text-slate-400 uppercase tracking-wider mr-2">
+            Technology Stack:
+          </span>
+          {activeDiv.tags.map((tag) => (
+            <span
+              key={tag}
+              className="text-xs font-bold px-3 py-1 rounded-lg bg-slate-100 text-slate-700 border border-slate-200"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        {/* 3 Modules Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {activeDiv.services.map((svc, idx) => (
             <div
               key={idx}
-              className="p-6 rounded-xl flex flex-col justify-between"
-              style={{
-                background: 'var(--bg-surface)',
-                border: '1px solid var(--border-subtle)',
-              }}
+              className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between"
             >
               <div>
-                <div style={{ fontSize: '0.72rem', fontWeight: 800, color: activeDiv.accent, marginBottom: 8 }}>
+                <div
+                  className="text-xs font-black uppercase tracking-wider mb-2"
+                  style={{ color: activeDiv.accent }}
+                >
                   MODULE 0{idx + 1}
                 </div>
-                <h4 style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: 10, lineHeight: 1.35 }}>
+
+                <h4 className="text-base font-extrabold text-slate-900 mb-2 leading-snug">
                   {svc.name}
                 </h4>
-                <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 1.65, marginBottom: 16 }}>
+
+                <p className="text-xs text-slate-600 leading-relaxed mb-5">
                   {svc.description}
                 </p>
+
                 <div className="space-y-2 mb-6">
                   {svc.features.map((feat, fIdx) => (
-                    <div key={fIdx} className="flex items-start gap-2.5 text-xs" style={{ color: 'var(--text-primary)', lineHeight: 1.5 }}>
-                      <span style={{ color: activeDiv.accent, fontWeight: 800, marginTop: -1 }}>✓</span>
+                    <div key={fIdx} className="flex items-start gap-2 text-xs text-slate-700 font-medium">
+                      <span className="text-amber-600 font-black mt-0.5">✓</span>
                       <span>{feat}</span>
                     </div>
                   ))}
@@ -249,29 +265,14 @@ export default function ServicesSection() {
 
               <button
                 onClick={() => scrollTo('contact')}
-                className="w-full py-2.5 px-4 rounded-lg text-xs font-bold transition-all text-center cursor-pointer"
-                style={{
-                  background: 'transparent',
-                  border: `1px solid ${activeDiv.accent}66`,
-                  color: activeDiv.accent,
-                }}
-                onMouseEnter={(e) => {
-                  const el = e.currentTarget
-                  el.style.background = activeDiv.accent
-                  el.style.color = '#000'
-                }}
-                onMouseLeave={(e) => {
-                  const el = e.currentTarget
-                  el.style.background = 'transparent'
-                  el.style.color = activeDiv.accent
-                }}
+                className="w-full py-2.5 px-4 rounded-xl text-xs font-bold transition-all text-center cursor-pointer border border-slate-300 hover:bg-slate-900 hover:text-white hover:border-slate-900 bg-white text-slate-800 shadow-sm"
               >
-                Inquire About This Service →
+                Inquire About This Module →
               </button>
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   )
 }

@@ -1,12 +1,16 @@
 {
-  "title": "JS-Gold",
-  "description": "",
+  "title": "JS-GOLD Digital World — Full-Stack Technology & Multimedia Agency",
+  "description": "JS-GOLD Digital World delivers enterprise software development (React, Laravel, Flutter), ISP-grade network infrastructure (MikroTik RouterOS), multi-camera live broadcast streaming (vMix), and broadcast multimedia production.",
   "language": "en",
   "robots": {
     "index": true
   },
-  "icons": {},
-  "openGraph": {},
+  "icons": {
+    "icon": "/favicon.png"
+  },
+  "openGraph": {
+    "image": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1200&auto=format&fit=crop"
+  },
   "analytics": {},
   "customScripts": {},
   "accessibility": {
