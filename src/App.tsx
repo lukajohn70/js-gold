@@ -3,6 +3,7 @@ import { getStoredTheme, applyTheme, type Theme } from './utils'
 import Nav from './components/Nav'
 import HeroSection from './components/HeroSection'
 import AtAGlance from './components/AtAGlance'
+import MarqueeRibbon from './components/MarqueeRibbon'
 import Footer from './components/Footer'
 import SubPageShell from './components/SubPageShell'
 import { scrollTo } from './utils'
@@ -134,9 +135,10 @@ export default function App() {
 
       <main className="fade-in-on-load" style={{ position: 'relative', zIndex: 1 }}>
 
-        {/* HOME — hero + divisions overview + industries teaser */}
+        {/* HOME — hero + marquee + divisions overview + industries teaser */}
         <div id="home">
           <HeroSection onOpenServices={openServices} />
+          <MarqueeRibbon />
           <AtAGlance onOpenServices={openServices} />
           <Suspense fallback={<SectionFallback />}>
             <IndustriesSection />

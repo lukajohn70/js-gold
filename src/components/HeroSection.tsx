@@ -1,5 +1,5 @@
 import { scrollTo } from '../utils'
-import NetworkVisual from './NetworkVisual'
+import StudioConsole from './StudioConsole'
 import { attachRipple } from '../App'
 
 interface HeroSectionProps {
@@ -8,135 +8,116 @@ interface HeroSectionProps {
 
 export default function HeroSection({ onOpenServices }: HeroSectionProps) {
   return (
-    <div className="section-fade" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', paddingTop: 68, position: 'relative', overflow: 'hidden' }}>
-
-      {/* Grid background */}
+    <div className="section-fade relative min-h-[92vh] flex items-center pt-24 pb-16 overflow-hidden">
+      {/* Subtle Background Radial Atmosphere */}
       <div
+        className="absolute inset-0 pointer-events-none"
         style={{
-          position: 'absolute', inset: 0,
+          background: `
+            radial-gradient(ellipse 65% 55% at 20% 15%, var(--ambient-1) 0%, transparent 60%),
+            radial-gradient(ellipse 60% 60% at 85% 65%, var(--ambient-2) 0%, transparent 60%)
+          `,
+        }}
+      />
+
+      {/* Modern Grid Line Mask */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-40"
+        style={{
           backgroundImage: 'linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
-          mask: 'radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%)',
-          WebkitMask: 'radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%)',
+          backgroundSize: '50px 50px',
+          maskImage: 'radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%)',
+          WebkitMaskImage: 'radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%)',
         }}
       />
 
-      {/* Floating ambient blobs */}
-      <div
-        className="blob-gold"
-        style={{
-          position: 'absolute', top: '10%', left: '5%',
-          width: 220, height: 220,
-          borderRadius: '50%',
-          background: 'var(--gold)',
-          opacity: 0.07,
-          filter: 'blur(60px)',
-          pointerEvents: 'none',
-        }}
-      />
-      <div
-        className="blob-blue"
-        style={{
-          position: 'absolute', bottom: '12%', right: '6%',
-          width: 300, height: 300,
-          borderRadius: '50%',
-          background: '#50C8FF',
-          opacity: 0.06,
-          filter: 'blur(80px)',
-          pointerEvents: 'none',
-        }}
-      />
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 px-4 sm:px-6 md:px-8 py-12 lg:py-20" style={{
-        maxWidth: 1280, margin: '0 auto',
-        width: '100%', alignItems: 'center', position: 'relative', zIndex: 1,
-      }}>
-        {/* Left: Copy */}
-        <div>
-          <div className="section-label" style={{ marginBottom: 20 }}>
-            ◆ &nbsp; Technology &amp; Multimedia Agency · Quality You Can Trust
-          </div>
+          {/* Left Column: Bold Typography & Action */}
+          <div className="lg:col-span-7">
+            {/* Tagline Pill Badge */}
+            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full mb-6 border border-[var(--border-gold)] bg-[var(--gold-glow)] backdrop-blur-md">
+              <span className="w-2 h-2 rounded-full bg-[var(--gold)] pulse-dot" />
+              <span className="text-xs font-mono font-bold tracking-wider text-[var(--gold)] uppercase">
+                Quality You Can Trust
+              </span>
+              <span className="text-[var(--text-dim)]">•</span>
+              <span className="text-xs font-semibold text-[var(--text-primary)]">
+                Integrated Agency
+              </span>
+            </div>
 
-          <h1 style={{
-            fontSize: 'clamp(2.1rem, 3.8vw, 3.4rem)', fontWeight: 800, lineHeight: 1.12,
-            letterSpacing: '-0.025em', color: 'var(--text-primary)', margin: '0 0 20px',
-          }}>
-            We Build.{' '}
-            <span style={{
-              background: 'linear-gradient(135deg, #D4AF37 0%, #E8CC6A 60%, #D4AF37 100%)',
-              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
-            }}>
-              We Broadcast.
-            </span>
-            <br />
-            We Create.
-          </h1>
-
-          <p style={{ fontSize: '1rem', lineHeight: 1.75, color: 'var(--text-muted)', margin: '0 0 24px', maxWidth: 480 }}>
-            JS-GOLD Digital World is a full-stack technology and creative powerhouse. From robust enterprise software &amp; network engineering to high-definition broadcast production and captivating multimedia, we deliver end-to-end digital excellence.
-          </p>
-
-          {/* Badge */}
-          <div style={{
-            display: 'inline-flex', alignItems: 'center', gap: 8,
-            padding: '8px 16px', borderRadius: 6, marginBottom: 32,
-            background: 'var(--gold-glow)', border: '1px solid var(--border-gold)',
-          }}>
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--gold)', flexShrink: 0 }} />
-            <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.06em', color: 'var(--gold)' }}>
-              Quality You Can Trust — 3 Core Divisions Under One Roof
-            </span>
-          </div>
-
-          <div style={{ display: 'flex', gap: 14, alignItems: 'center', flexWrap: 'wrap' }}>
-            <button
-              onClick={(e) => { attachRipple(e); scrollTo('contact') }}
-              className="gold-glow-btn ripple"
-              style={{ padding: '13px 28px', borderRadius: 9, fontSize: '0.85rem', border: 'none', cursor: 'pointer', fontFamily: 'inherit' }}
+            {/* Giant Headline */}
+            <h1
+              className="font-extrabold tracking-tight text-[var(--text-primary)] leading-[1.08] mb-6"
+              style={{ fontSize: 'clamp(2.4rem, 4.5vw, 4.2rem)' }}
             >
-              Start a Project
-            </button>
+              We Build.{' '}
+              <span
+                style={{
+                  background: 'linear-gradient(135deg, var(--gold) 0%, #FFF 40%, var(--gold-light) 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                }}
+              >
+                We Broadcast.
+              </span>
+              <br />
+              We Create.
+            </h1>
 
-            <button
-              onClick={() => {
-                if (onOpenServices) onOpenServices()
-                else scrollTo('about')
-              }}
-              title="Explore Our Services"
-              className="glass-btn ripple"
-              style={{
-                display: 'flex', alignItems: 'center', gap: 8,
-                padding: '12px 22px', borderRadius: 9,
-                fontSize: '0.82rem', cursor: 'pointer', fontFamily: 'inherit',
-              }}
-            >
-              Explore Our Services →
-            </button>
+            {/* Compelling Value Proposition */}
+            <p className="text-base sm:text-lg text-[var(--text-muted)] leading-relaxed max-w-xl mb-8 font-normal">
+              JS-GOLD Digital World is a full-stack technology and multimedia agency. We engineer enterprise software &amp; campus network infrastructure, produce broadcast-grade live streams, and deliver cinematic creative media under one accountable roof.
+            </p>
+
+            {/* Dual CTAs */}
+            <div className="flex flex-wrap items-center gap-4 mb-12">
+              <button
+                onClick={(e) => { attachRipple(e); scrollTo('contact') }}
+                className="gold-glow-btn ripple px-8 py-4 rounded-xl text-sm font-bold flex items-center gap-2 cursor-pointer shadow-xl"
+              >
+                <span>Start a Project</span>
+                <span>→</span>
+              </button>
+
+              <button
+                onClick={() => onOpenServices ? onOpenServices() : scrollTo('about')}
+                className="glass-btn ripple px-7 py-4 rounded-xl text-sm font-semibold flex items-center gap-2 cursor-pointer"
+              >
+                <span>Explore Capabilities</span>
+              </button>
+            </div>
+
+            {/* Live Stats Strip */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 border-t border-[var(--border-subtle)]">
+              {[
+                { number: '3', label: 'Core Divisions', sub: 'Integrated Teams' },
+                { number: '100+', label: 'Delivered Projects', sub: 'Enterprise & SMEs' },
+                { number: '99.9%', label: 'Network SLA', sub: 'High Reliability' },
+                { number: '0s', label: 'Live Stream Lag', sub: 'Broadcast Low-Latency' },
+              ].map((stat) => (
+                <div key={stat.label}>
+                  <div className="text-2xl sm:text-3xl font-extrabold text-[var(--gold)] font-display tracking-tight">
+                    {stat.number}
+                  </div>
+                  <div className="text-xs font-bold text-[var(--text-primary)] mt-1">
+                    {stat.label}
+                  </div>
+                  <div className="text-[11px] text-[var(--text-dim)] font-mono">
+                    {stat.sub}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Stats */}
-          <div style={{ display: 'flex', gap: 28, marginTop: 44, paddingTop: 24, borderTop: '1px solid var(--border-subtle)', flexWrap: 'wrap' }}>
-            {[
-              { value: '3', label: 'Core Divisions' },
-              { value: '100+', label: 'Delivered Projects' },
-              { value: '99.9%', label: 'Network Reliability' },
-              { value: '5+ Years', label: 'Industry Excellence' },
-            ].map((stat) => (
-              <div key={stat.label}>
-                <div style={{ fontSize: '1.45rem', fontWeight: 800, color: 'var(--gold)', letterSpacing: '-0.02em', lineHeight: 1 }}>
-                  {stat.value}
-                </div>
-                <div style={{ fontSize: '0.7rem', color: 'var(--text-dim)', marginTop: 5, letterSpacing: '0.03em' }}>
-                  {stat.label}
-                </div>
-              </div>
-            ))}
+          {/* Right Column: Interactive Studio Console */}
+          <div className="lg:col-span-5 flex justify-center">
+            <StudioConsole />
           </div>
-        </div>
 
-        {/* Right: Visual */}
-        <div className="hidden lg:flex" style={{ justifyContent: 'center', alignItems: 'center' }}>
-          <NetworkVisual />
         </div>
       </div>
     </div>
