@@ -11,7 +11,7 @@ export function getStoredTheme(): Theme {
     const stored = localStorage.getItem('jsgold-theme')
     if (stored === 'dark' || stored === 'light') return stored
   } catch {}
-  return 'light'
+  return 'light' // Clean, bright Learnerium & Brandstore aesthetic by default
 }
 
 export function applyTheme(theme: Theme) {

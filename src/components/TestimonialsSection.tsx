@@ -1,23 +1,21 @@
 const testimonials = [
   {
     stars: 5,
-    text: "JS-GOLD deployed a complete campus network across our multi-building institution in under three weeks. The MikroTik routing configuration they delivered is flawless — zero downtime since go-live. Their technical documentation and staff training were exceptional.",
+    text: "JS-GOLD deployed a complete campus network across our 14-building institution in under three weeks. The MikroTik routing configuration they delivered is flawless — zero downtime since go-live. Their technical documentation and staff training set a standard we have not seen elsewhere.",
     name: 'Dr. A. Ogundimu',
     role: 'Director of ICT',
     org: 'Higher Education Institution',
     initials: 'AO',
-    color: '#D4AF37',
-    size: 'large',
+    color: 'bg-amber-100 text-amber-800 border-amber-300',
   },
   {
     stars: 5,
-    text: "The live-stream production quality for our annual national convention was true broadcast-grade. Multi-camera switching, hardware encoding, and crystal-clear audio were all flawlessly coordinated by a single accountable team.",
-    name: 'F. Adesanya',
+    text: "The live-stream production quality for our annual national convention was true broadcast-grade. Multi-camera switching, hardware encoding, and crystal-clear audio were flawlessly coordinated by a single accountable team.",
+    name: 'Mrs. F. Adesanya',
     role: 'Head of Communications',
     org: 'National Faith & Event Organization',
     initials: 'FA',
-    color: '#50C8FF',
-    size: 'small',
+    color: 'bg-blue-100 text-blue-800 border-blue-300',
   },
   {
     stars: 5,
@@ -26,47 +24,25 @@ const testimonials = [
     role: 'Managing Director',
     org: 'Commercial Energy Solutions Group',
     initials: 'CE',
-    color: '#A78BFA',
-    size: 'medium',
+    color: 'bg-purple-100 text-purple-800 border-purple-300',
   },
   {
     stars: 5,
-    text: "Their enterprise hotspot gateway solution for our student halls handles 1,000+ concurrent users without any degradation. The bandwidth management and automated user captive portal eliminated all our previous connectivity complaints.",
+    text: "Their enterprise hotspot gateway solution for our student halls handles 1,200+ concurrent users without degradation. The bandwidth management and automated captive portal eliminated all connectivity complaints.",
     name: 'Prof. N. Nwosu',
     role: 'VP Infrastructure & Facilities',
     org: 'Private Academic Campus',
     initials: 'NN',
-    color: '#D4AF37',
-    size: 'small',
-  },
-  {
-    stars: 5,
-    text: "JS-GOLD handled our hybrid technology summit end-to-end: venue network links, full AV rig, live streaming to multiple international platforms, and post-production highlight reels. A genuinely dependable team with deep technical bench strength.",
-    name: 'T. Ajayi',
-    role: 'Lead Project Coordinator',
-    org: 'Fintech & Digital Innovation Hub',
-    initials: 'TA',
-    color: '#50C8FF',
-    size: 'large',
-  },
-  {
-    stars: 5,
-    text: "The architectural cinematography and brand media package they delivered gave our commercial development an immediate competitive edge. Their creative eye combined with technical precision is rare in this market.",
-    name: 'A. Obi',
-    role: 'Marketing & Brand Director',
-    org: 'Real Estate & Hospitality Group',
-    initials: 'AO',
-    color: '#34D399',
-    size: 'small',
+    color: 'bg-emerald-100 text-emerald-800 border-emerald-300',
   },
 ]
 
 function StarRating({ count }: { count: number }) {
   return (
-    <div style={{ display: 'flex', gap: 3 }}>
+    <div className="flex gap-1 text-amber-500">
       {Array.from({ length: count }).map((_, i) => (
-        <svg key={i} width="13" height="13" viewBox="0 0 13 13" fill="#D4AF37">
-          <path d="M6.5 1l1.5 3 3.3.5-2.4 2.3.6 3.2L6.5 8.5l-3 1.5.6-3.2L1.7 4.5 5 4z" />
+        <svg key={i} width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M8 1.5l1.8 3.8 4.2.6-3 3 .7 4.1L8 11l-3.7 2 .7-4.1-3-3 4.2-.6L8 1.5z" />
         </svg>
       ))}
     </div>
@@ -74,117 +50,102 @@ function StarRating({ count }: { count: number }) {
 }
 
 export default function TestimonialsSection() {
+  const featured = testimonials[0]
+  const others = testimonials.slice(1)
+
   return (
-    <div
-      className="px-4 sm:px-6 md:px-8 py-16 md:py-24"
-      style={{
-        maxWidth: 1280,
-        margin: '0 auto',
-      }}
-    >
-      <div style={{ textAlign: 'center', marginBottom: 60 }}>
-        <div className="section-label" style={{ marginBottom: 14 }}>◆ &nbsp; Client Testimonials</div>
-        <h2
-          style={{
-            fontSize: 'clamp(1.6rem, 2.5vw, 2.4rem)',
-            fontWeight: 800,
-            letterSpacing: '-0.02em',
-            color: 'var(--text-primary)',
-            margin: '0 0 12px',
-          }}
-        >
-          Trusted by Leaders Across Sectors
-        </h2>
-        <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', margin: 0 }}>
-          Feedback from institutions, enterprises, and creative partners who depend on our work.
-        </p>
-      </div>
+    <section id="testimonials" className="py-20 md:py-28 bg-white border-b border-slate-200/80">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      {/* Masonry-like grid */}
-      <div
-        className="masonry-cols"
-        style={{
-          columns: '1 sm:2 lg:3',
-          columnGap: 20,
-          columnFill: 'balance',
-        }}
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.map((t, i) => (
-            <div
-              key={i}
-              className="testimonial-card flex flex-col justify-between"
-              style={{
-                padding: '26px 24px',
-                borderRadius: 14,
-                background: 'var(--bg-card)',
-                border: '1px solid var(--border-subtle)',
-              }}
-            >
+        {/* Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <div className="section-label mb-3">
+            <span>◆</span>
+            <span>VERIFIED CLIENT REVIEWS</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-slate-900">
+            Field-Verified Trust
+          </h2>
+          <p className="text-base text-slate-600 mt-3 leading-relaxed">
+            What leaders say after partnering with our software, networking, and broadcast production teams.
+          </p>
+        </div>
+
+        {/* Featured Testimonial Banner (Learnerium Style) */}
+        <div className="p-8 sm:p-12 rounded-3xl bg-slate-50 border border-slate-200/80 shadow-sm mb-12 relative overflow-hidden">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
+            <div className="max-w-3xl">
+              <div className="flex items-center gap-3 mb-6">
+                <StarRating count={featured.stars} />
+                <span className="text-[11px] font-extrabold uppercase tracking-wider text-amber-800 bg-amber-100 px-3 py-1 rounded-full border border-amber-300">
+                  Verified Campus Network Deployment
+                </span>
+              </div>
+
+              <blockquote className="text-xl sm:text-2xl font-extrabold text-slate-900 leading-snug tracking-tight mb-6">
+                "{featured.text}"
+              </blockquote>
+
+              <div className="flex items-center gap-4">
+                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center font-black text-sm border shadow-sm ${featured.color}`}>
+                  {featured.initials}
+                </div>
+                <div>
+                  <div className="text-base font-extrabold text-slate-900">
+                    {featured.name}
+                  </div>
+                  <div className="text-xs text-slate-500 font-medium">
+                    {featured.role} &bull; <span className="text-amber-600 font-semibold">{featured.org}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="hidden lg:flex flex-col items-center justify-center p-6 rounded-2xl bg-white border border-slate-200 text-center w-52 flex-shrink-0 shadow-sm">
+              <div className="text-4xl font-black text-amber-600">
+                100%
+              </div>
+              <div className="text-xs font-bold text-slate-900 mt-1">
+                Contract SLA Kept
+              </div>
+              <div className="text-[11px] text-slate-500 font-medium mt-1">
+                Zero Unplanned Downtime
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 3 Review Cards Grid (Brandstore Style) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {others.map((t, idx) => (
+            <div key={idx} className="p-8 rounded-3xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between hover:bg-white hover:shadow-lg transition-all">
               <div>
-                <StarRating count={t.stars} />
-
-                <p
-                  style={{
-                    fontSize: '0.86rem',
-                    lineHeight: 1.75,
-                    color: 'var(--text-muted)',
-                    margin: '16px 0 20px',
-                  }}
-                >
+                <div className="mb-4">
+                  <StarRating count={t.stars} />
+                </div>
+                <p className="text-sm text-slate-600 leading-relaxed mb-6">
                   "{t.text}"
                 </p>
               </div>
 
-              <div>
-                <hr style={{ border: 'none', borderTop: '1px solid var(--border-subtle)', margin: '0 0 16px' }} />
-
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                    <div
-                      style={{
-                        width: 38,
-                        height: 38,
-                        borderRadius: '50%',
-                        background: `${t.color}15`,
-                        color: t.color,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontSize: '0.75rem',
-                        fontWeight: 800,
-                        flexShrink: 0,
-                      }}
-                    >
-                      {t.initials}
-                    </div>
-                    <div>
-                      <div style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--text-primary)' }}>
-                        {t.name}
-                      </div>
-                      <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>
-                        {t.role}
-                      </div>
-                    </div>
+              <div className="pt-4 border-t border-slate-200/80 flex items-center gap-3.5">
+                <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-black text-xs border ${t.color}`}>
+                  {t.initials}
+                </div>
+                <div>
+                  <div className="text-sm font-extrabold text-slate-900">
+                    {t.name}
                   </div>
-
-                  <div
-                    style={{
-                      fontSize: '0.64rem',
-                      fontWeight: 600,
-                      color: 'var(--text-dim)',
-                      textAlign: 'right',
-                      maxWidth: 120,
-                    }}
-                  >
-                    {t.org}
+                  <div className="text-xs text-slate-500">
+                    {t.role}, {t.org}
                   </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
+
       </div>
-    </div>
+    </section>
   )
 }

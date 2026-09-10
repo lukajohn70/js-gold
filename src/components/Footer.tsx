@@ -13,110 +13,119 @@ export default function Footer({ theme, onOpenServices }: FooterProps) {
   const logoSrc = theme === 'light' ? logoWhiteBg : logoNoBg
 
   const navLinks = [
-    { label: 'Home', action: () => scrollTo('home') },
+    { label: 'Home', action: () => scrollTo('hero') },
     { label: 'About Us', action: () => scrollTo('about') },
-    { label: 'Our Services', action: () => onOpenServices ? onOpenServices() : scrollTo('home') },
-    { label: 'Portfolio & Case Studies', action: () => scrollTo('portfolio') },
-    { label: 'Insights & Blog', action: () => scrollTo('insights') },
+    { label: 'Our Services', action: () => onOpenServices ? onOpenServices() : scrollTo('divisions') },
+    { label: 'Featured Portfolio', action: () => scrollTo('portfolio') },
     { label: 'Client Testimonials', action: () => scrollTo('testimonials') },
     { label: 'Contact', action: () => scrollTo('contact') },
   ]
 
   const divisionLinks = [
-    { label: 'Software & Networking', action: () => onOpenServices ? onOpenServices() : scrollTo('home') },
-    { label: 'Broadcast & AV Systems', action: () => onOpenServices ? onOpenServices() : scrollTo('home') },
-    { label: 'Creative Media & Design', action: () => onOpenServices ? onOpenServices() : scrollTo('home') },
+    { label: 'Software Engineering (React, Laravel & Flutter)', action: () => onOpenServices ? onOpenServices() : scrollTo('divisions') },
+    { label: 'Network Infrastructure (MikroTik Core)', action: () => onOpenServices ? onOpenServices() : scrollTo('divisions') },
+    { label: 'Broadcast & AV Systems (vMix Live)', action: () => onOpenServices ? onOpenServices() : scrollTo('divisions') },
+    { label: 'Creative Media & UI/UX Design', action: () => onOpenServices ? onOpenServices() : scrollTo('divisions') },
   ]
 
   return (
-    <footer style={{ borderTop: '1px solid var(--border-subtle)', background: 'var(--section-alt)' }}>
-      <div className="px-4 sm:px-6 md:px-8 pt-12 pb-8" style={{ maxWidth: 1280, margin: '0 auto' }}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+    <footer className="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
 
-          {/* Brand */}
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
+          {/* Brand Info */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
               <img
                 src={logoSrc}
                 alt="JS-GOLD Logo"
-                style={{
-                  width: 34, height: 34, borderRadius: 7, objectFit: 'contain',
-                  background: theme === 'light' ? '#ffffff' : 'transparent',
-                  border: theme === 'light' ? '1px solid var(--border-subtle)' : 'none',
-                }}
+                className="w-10 h-10 object-contain rounded-xl shadow-sm"
               />
-              <div>
-                <div style={{ fontSize: '0.82rem', fontWeight: 800, letterSpacing: '0.08em', color: 'var(--gold)' }}>JS-GOLD</div>
-                <div style={{ fontSize: '0.56rem', letterSpacing: '0.12em', color: 'var(--text-dim)' }}>DIGITAL WORLD</div>
+              <div className="leading-tight">
+                <div className="text-base font-black tracking-tight text-slate-900 dark:text-white uppercase">
+                  JS-GOLD
+                </div>
+                <div className="text-[10px] font-extrabold uppercase tracking-widest text-amber-600">
+                  Digital World
+                </div>
               </div>
             </div>
-            <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: 1.7, margin: '0 0 14px', maxWidth: 260 }}>
-              Full-stack technology and multimedia agency. Software engineering, enterprise networking, broadcast production, and creative media.
+
+            <p className="text-xs sm:text-sm text-slate-500 leading-relaxed max-w-xs">
+              Nigeria's full-stack technology and creative powerhouse. Software development, campus networking, live streaming production, and cinematic media.
             </p>
-            <div style={{ fontSize: '0.74rem', color: 'var(--gold)', fontWeight: 700, letterSpacing: '0.04em' }}>
-              Quality You Can Trust
+
+            <div className="text-xs font-black text-amber-600 flex items-center gap-1.5">
+              <span>★</span>
+              <span>Quality You Can Trust</span>
             </div>
           </div>
 
-          {/* Navigation */}
+          {/* Quick Links */}
           <div>
-            <div style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.14em', color: 'var(--gold)', marginBottom: 14, textTransform: 'uppercase' }}>Navigation</div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
+            <div className="text-xs font-black uppercase tracking-wider text-slate-900 dark:text-white mb-4">
+              Quick Navigation
+            </div>
+            <div className="flex flex-col space-y-2.5">
               {navLinks.map((link) => (
-                <button key={link.label} onClick={link.action}
-                  style={{ background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', padding: 0, fontSize: '0.78rem', color: 'var(--text-muted)', fontFamily: 'inherit', transition: 'color 0.2s ease' }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = 'var(--text-primary)' }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = 'var(--text-muted)' }}>
+                <button
+                  key={link.label}
+                  onClick={link.action}
+                  className="text-left text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-amber-600 dark:hover:text-amber-400 transition cursor-pointer bg-transparent border-none p-0"
+                >
                   {link.label}
                 </button>
               ))}
             </div>
           </div>
 
-          {/* Divisions */}
+          {/* Core Divisions */}
           <div>
-            <div style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.14em', color: 'var(--gold)', marginBottom: 14, textTransform: 'uppercase' }}>Core Divisions</div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
+            <div className="text-xs font-black uppercase tracking-wider text-slate-900 dark:text-white mb-4">
+              Core Divisions
+            </div>
+            <div className="flex flex-col space-y-2.5">
               {divisionLinks.map((div) => (
-                <button key={div.label} onClick={div.action}
-                  style={{ background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', padding: 0, fontSize: '0.78rem', color: 'var(--text-muted)', fontFamily: 'inherit', transition: 'color 0.2s ease', display: 'flex', alignItems: 'center', gap: 6 }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = 'var(--gold)' }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = 'var(--text-muted)' }}>
-                  <span style={{ fontSize: '0.65rem', color: 'var(--gold)' }}>›</span>
-                  {div.label}
+                <button
+                  key={div.label}
+                  onClick={div.action}
+                  className="text-left text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-amber-600 dark:hover:text-amber-400 transition cursor-pointer bg-transparent border-none p-0 flex items-center gap-2"
+                >
+                  <span className="text-amber-500 text-[10px]">&bull;</span>
+                  <span>{div.label}</span>
                 </button>
               ))}
             </div>
           </div>
 
-          {/* Contact info & CTA */}
-          <div>
-            <div style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.14em', color: 'var(--gold)', marginBottom: 14, textTransform: 'uppercase' }}>Contact &amp; Location</div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-              <div style={{ fontSize: '0.76rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>
-                <div style={{ color: 'var(--text-primary)', fontWeight: 600, marginBottom: 2 }}>Nigeria</div>
-                +234 815 091 7741<br />
-                jsgold.dw@gmail.com
-              </div>
-              <button
-                onClick={(e) => { attachRipple(e); scrollTo('contact') }}
-                className="gold-glow-btn ripple"
-                style={{ padding: '11px 20px', borderRadius: 8, fontSize: '0.78rem', border: 'none', cursor: 'pointer', fontFamily: 'inherit', width: 'fit-content' }}
-              >
-                Free Consultation →
-              </button>
+          {/* Contact Details & CTA */}
+          <div className="space-y-4">
+            <div className="text-xs font-black uppercase tracking-wider text-slate-900 dark:text-white mb-4">
+              Contact &amp; Location
             </div>
+
+            <div className="text-xs text-slate-600 dark:text-slate-400 space-y-1.5 leading-relaxed">
+              <div className="font-bold text-slate-900 dark:text-white">Nigeria HQ</div>
+              <div>+234 815 091 7741</div>
+              <div>jsgold.dw@gmail.com</div>
+            </div>
+
+            <button
+              onClick={(e) => { attachRipple(e); scrollTo('contact') }}
+              className="bg-slate-900 hover:bg-slate-800 text-white dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100 px-5 py-2.5 rounded-xl text-xs font-bold transition shadow-sm cursor-pointer"
+            >
+              Request Free Consultation →
+            </button>
           </div>
+
         </div>
 
-        <hr className="razor-line" style={{ marginBottom: 24 }} />
-
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
-          <div style={{ fontSize: '0.72rem', color: 'var(--text-dim)', letterSpacing: '0.02em' }}>
-            © {new Date().getFullYear()} JS-GOLD Digital World. All rights reserved.
+        <div className="pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+          <div>
+            &copy; {new Date().getFullYear()} JS-GOLD Digital World. All rights reserved.
           </div>
-          <div style={{ fontSize: '0.68rem', color: 'var(--text-dim)', letterSpacing: '0.04em' }}>
-            Quality You Can Trust · Technology &amp; Multimedia Agency
+          <div className="font-semibold text-slate-500">
+            Powered by Technology &bull; Elevated by Creativity
           </div>
         </div>
       </div>

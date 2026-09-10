@@ -1,209 +1,246 @@
-import Timeline from './Timeline'
-
-const coreValues = [
-  { label: 'Excellence', icon: '◈', body: 'Every deliverable meets a rigorous engineering standard before deployment.' },
-  { label: 'Innovation', icon: '◇', body: 'We leverage modern, battle-tested tools that solve actual problems with measurable ROI.' },
-  { label: 'Integrity', icon: '▣', body: 'Transparent scopes, honest assessments, and realistic milestone schedules.' },
-  { label: 'Reliability', icon: '⬡', body: 'We build for uptime, high concurrency, and uninterrupted business continuity.' },
-  { label: 'Partnership', icon: '▦', body: 'We stand by our work with proactive maintenance, training, and strategic advisory.' },
-]
+import { scrollTo } from '../utils'
 
 const teamMembers = [
   {
-    name: 'John Luka',
-    role: 'Technical Director & Lead Architect',
-    division: 'Executive & Engineering',
-    bio: 'Oversees technology architecture, software systems, and enterprise network design with a focus on high-reliability infrastructure.',
-    avatar: 'JL',
-    color: '#D4AF37',
+    name: 'Technical Director & Lead Architect',
+    role: 'Chief Technology Direction',
+    specialty: 'Enterprise Software (React, Laravel, Flutter) & Systems Architecture',
+    bio: 'Oversees full-stack systems architecture, modern frontend & backend engineering (React, Laravel, Flutter), and mission-critical network deployments with over 5 years of verified field delivery.',
+    avatar: 'TD',
+    accent: 'bg-amber-100 text-amber-800 border-amber-300',
   },
   {
     name: 'Lead Network Engineer',
     role: 'Head of Infrastructure & Security',
-    division: 'Software & Networking',
-    bio: 'Specialist in MikroTik routing, bandwidth management, campus fiber distribution, and robust multi-site network topologies.',
+    specialty: 'MikroTik RouterOS & Campus Fiber Backbones',
+    bio: 'Specialist in high-density captive portal routing, BGP peering, bandwidth QoS shaping, and zero-trust perimeter security.',
     avatar: 'NE',
-    color: '#50C8FF',
+    accent: 'bg-blue-100 text-blue-800 border-blue-300',
   },
   {
     name: 'Head of Broadcast Production',
-    role: 'Chief AV & Streaming Engineer',
-    division: 'Broadcast & AV Systems',
-    bio: 'Directs multi-camera live productions, broadcast-grade video encoding, audio mastering, and low-latency digital streams.',
+    role: 'Chief AV & Live Stream Engineer',
+    specialty: 'vMix Multicam & Dante AoIP Protocols',
+    bio: 'Directs multi-camera production rigs, low-latency SRT/RTMP pipelines, and professional stage sound balancing.',
     avatar: 'BP',
-    color: '#A78BFA',
+    accent: 'bg-purple-100 text-purple-800 border-purple-300',
   },
   {
     name: 'Creative Media Director',
-    role: 'Lead Visual Storyteller & Designer',
-    division: 'Creative Media',
-    bio: 'Leads digital visual branding, cinematic cinematography, UI/UX interaction systems, and high-impact post-production.',
+    role: 'Visual Storyteller & UI/UX Lead',
+    specialty: '4K Cinematography & DaVinci Color Grading',
+    bio: 'Leads digital visual branding, high-end commercial documentaries, motion graphics, and conversion-focused web/mobile UI design.',
     avatar: 'CD',
-    color: '#34D399',
+    accent: 'bg-emerald-100 text-emerald-800 border-emerald-300',
   },
 ]
 
-const differentiators = [
+const values = [
   {
-    title: 'The Unified Agency Advantage',
-    desc: 'Most clients struggle managing separate software developers, IT networking contractors, and video production teams. At JS-GOLD, these disciplines communicate seamlessly under one roof.',
-    badge: 'Single Accountability',
+    title: 'Excellence',
+    desc: 'Every network configuration, line of code, and camera angle meets a defined commercial engineering standard.',
+    icon: '◈',
+    color: 'bg-amber-50 text-amber-600',
   },
   {
-    title: 'Enterprise-Grade Engineering',
-    desc: 'Whether configuring a 1,000-user MikroTik campus hotspot or architecting a Laravel backend, we adhere to strict international engineering standards and version control.',
-    badge: 'Production-Ready',
+    title: 'Integrity',
+    desc: 'Transparent scopes, realistic delivery timelines, and honest technical assessments without hidden fees.',
+    icon: '▣',
+    color: 'bg-blue-50 text-blue-600',
   },
   {
-    title: 'Precision Live Execution',
-    desc: 'There are no second takes during a live conference, church service, or major institution event. Our redundant broadcast and AV setups guarantee flawless uptime.',
-    badge: 'Zero Downtime',
+    title: 'Reliability',
+    desc: 'Contractual uptime obligations and redundant internet failovers — we engineer for uninterrupted business continuity.',
+    icon: '⬡',
+    color: 'bg-emerald-50 text-emerald-600',
   },
   {
-    title: 'Quality You Can Trust',
-    desc: 'From day one, our ethos has been built on long-term client trust. We provide complete documentation, staff handover training, and responsive ongoing support.',
-    badge: 'Commitment',
+    title: 'Partnership',
+    desc: 'Proactive support, staff handover training, and strategic advisory are included in every engagement.',
+    icon: '▦',
+    color: 'bg-purple-50 text-purple-600',
+  },
+]
+
+const comparison = [
+  {
+    feature: 'Accountability',
+    fragmented: '3 different contractors pointing fingers when an issue arises',
+    jsgold: 'Single accountable agency delivering both technology and media',
+  },
+  {
+    feature: 'Live Broadcast Reliability',
+    fragmented: 'Media team suffers because event venue network drops out',
+    jsgold: 'Our network engineers deploy the dedicated bonded pipe for our broadcast crew',
+  },
+  {
+    feature: 'Software & Visual Design',
+    fragmented: 'Programmers build clunky UIs; designers build code that breaks',
+    jsgold: 'UI/UX designers collaborate directly with React, Laravel, and Flutter engineers',
+  },
+  {
+    feature: 'Communication & Overhead',
+    fragmented: 'Multiple retainer agreements, duplicate overheads, misaligned schedules',
+    jsgold: 'Unified project management, clear milestone deliverables, optimized budget',
   },
 ]
 
 export default function CompanyProfileSection() {
   return (
-    <div className="section-fade" style={{ background: 'var(--section-alt)', borderTop: '1px solid var(--border-subtle)', borderBottom: '1px solid var(--border-subtle)', position: 'relative' }}>
-      <div className="px-4 sm:px-6 md:px-8 py-20" style={{ maxWidth: 1280, margin: '0 auto' }}>
+    <section id="about" className="py-20 md:py-28 bg-white border-y border-slate-200/80">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <div className="section-label" style={{ marginBottom: 12 }}>◆ &nbsp; About JS-GOLD Digital World</div>
-          <h2 style={{
-            fontSize: 'clamp(2rem, 3vw, 2.8rem)', fontWeight: 800,
-            letterSpacing: '-0.025em', color: 'var(--text-primary)', margin: '0 0 16px', lineHeight: 1.2,
-          }}>
+        <div className="max-w-3xl mb-16">
+          <div className="section-label mb-3">
+            <span>◆</span>
+            <span>ABOUT JS-GOLD DIGITAL WORLD</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-slate-900 leading-tight">
             Engineering Excellence Across{' '}
-            <span style={{
-              background: 'linear-gradient(135deg, var(--gold), var(--gold-light))',
-              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
-            }}>
-              Bits &amp; Broadcast
+            <span className="bg-gradient-to-r from-amber-600 to-amber-500 bg-clip-text text-transparent">
+              Technology &amp; Media
             </span>
           </h2>
-          <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: 1.7, margin: 0 }}>
-            We are a technology and multimedia engineering agency bridging the gap between digital systems and creative execution. We turn technical complexity into seamless operations.
+          <p className="text-base sm:text-lg text-slate-600 mt-4 leading-relaxed">
+            Founded on the principle that modern organizations deserve enterprise-grade technical precision paired with world-class creative storytelling — under one unified team.
           </p>
         </div>
 
-        {/* Mission & Vision */}
-        <div style={{ marginBottom: 64 }}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              {
-                label: 'OUR MISSION',
-                headline: 'Engineering Integrated Digital Solutions',
-                body: 'To deliver dependable technology infrastructure, cutting-edge software, and premium multimedia experiences that empower organizations, businesses, and creators to achieve their highest ambitions.',
-                accent: 'var(--gold)',
-              },
-              {
-                label: 'OUR VISION',
-                headline: 'A Benchmark for Technology & Media in Africa',
-                body: 'To stand as the most trusted full-stack digital agency in our region — recognized for absolute technical integrity, creative distinction, and sustainable digital impact.',
-                accent: '#50C8FF',
-              },
-            ].map((item) => (
-              <div key={item.label} style={{
-                padding: '32px', borderRadius: 14,
-                background: 'var(--bg-surface)',
-                border: '1px solid var(--border-subtle)',
-                borderLeft: `4px solid ${item.accent}`,
-              }}>
-                <div style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.18em', color: item.accent, marginBottom: 12 }}>{item.label}</div>
-                <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-primary)', margin: '0 0 12px', lineHeight: 1.3 }}>{item.headline}</h3>
-                <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', margin: 0, lineHeight: 1.75 }}>{item.body}</p>
-              </div>
-            ))}
+        {/* Mission & Vision Cards (Learnerium Style) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+          <div className="p-8 sm:p-10 rounded-3xl bg-slate-50 border border-slate-200/80 shadow-sm relative overflow-hidden">
+            <div className="w-12 h-12 rounded-2xl bg-amber-500 text-white flex items-center justify-center font-black text-xl mb-6 shadow-md">
+              🎯
+            </div>
+            <div className="text-xs font-black uppercase tracking-widest text-amber-600 mb-2">
+              OUR MISSION
+            </div>
+            <h3 className="text-2xl font-extrabold text-slate-900 mb-4">
+              Engineering Dependable Digital Solutions
+            </h3>
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+              To deliver resilient campus networks, high-concurrency software, and broadcast-grade live multimedia experiences that empower institutions, businesses, and creators to operate and communicate at their highest level.
+            </p>
+          </div>
+
+          <div className="p-8 sm:p-10 rounded-3xl bg-slate-50 border border-slate-200/80 shadow-sm relative overflow-hidden">
+            <div className="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center font-black text-xl mb-6 shadow-md">
+              🔭
+            </div>
+            <div className="text-xs font-black uppercase tracking-widest text-blue-600 mb-2">
+              OUR VISION
+            </div>
+            <h3 className="text-2xl font-extrabold text-slate-900 mb-4">
+              Africa's Benchmark for Integrated Excellence
+            </h3>
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+              To stand as West Africa's foremost full-stack digital and media engineering agency — celebrated for absolute technical integrity, verifiable performance standards, and lasting institutional impact.
+            </p>
           </div>
         </div>
 
-        {/* Why JS-GOLD */}
-        <div style={{ marginBottom: 64 }}>
-          <div className="section-label" style={{ marginBottom: 12 }}>◆ &nbsp; Why Partner With Us</div>
-          <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-primary)', margin: '0 0 28px', letterSpacing: '-0.01em' }}>
-            Why Clients Choose JS-GOLD Digital World
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {differentiators.map((diff, i) => (
-              <div key={i} className="glass-card" style={{ padding: '24px 26px', borderRadius: 12 }}>
-                <div className="flex items-center justify-between mb-3">
-                  <h4 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text-primary)', margin: 0 }}>{diff.title}</h4>
-                  <span style={{ fontSize: '0.65rem', fontWeight: 700, color: 'var(--gold)', background: 'var(--gold-glow)', padding: '3px 10px', borderRadius: 4 }}>
-                    {diff.badge}
+        {/* The Unified Agency Advantage (Brandstore Comparison) */}
+        <div className="p-8 sm:p-12 rounded-3xl bg-white border border-slate-200 shadow-md mb-20">
+          <div className="max-w-2xl mb-10">
+            <span className="text-xs font-black uppercase tracking-widest text-amber-600">
+              WHY PARTNER WITH US
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-black text-slate-900 mt-2">
+              The Unified Agency Advantage
+            </h3>
+            <p className="text-sm text-slate-600 mt-2">
+              See why leading organizations choose JS-GOLD over managing separate freelancers and disconnected contractors.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {comparison.map((item, idx) => (
+              <div key={idx} className="p-6 rounded-2xl bg-slate-50 border border-slate-200/70 space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-black uppercase text-slate-900 tracking-wider">
+                    {item.feature}
+                  </span>
+                  <span className="text-[10px] font-extrabold text-emerald-700 bg-emerald-100 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                    JS-GOLD Standard
                   </span>
                 </div>
-                <p style={{ fontSize: '0.84rem', color: 'var(--text-muted)', margin: 0, lineHeight: 1.7 }}>{diff.desc}</p>
+
+                <div className="text-xs text-red-500/80 line-through">
+                  ✕ {item.fragmented}
+                </div>
+
+                <div className="text-xs sm:text-sm font-bold text-slate-900 flex items-start gap-2">
+                  <span className="text-amber-600 font-black">✓</span>
+                  <span>{item.jsgold}</span>
+                </div>
               </div>
             ))}
           </div>
         </div>
-
-        <hr className="razor-line-gold" style={{ marginBottom: 64 }} />
 
         {/* Core Values */}
-        <div style={{ marginBottom: 64 }}>
-          <div className="section-label" style={{ marginBottom: 12 }}>◆ &nbsp; Core Values</div>
-          <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-primary)', margin: '0 0 28px', letterSpacing: '-0.01em' }}>
-            The Principles That Guide Every Project
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {coreValues.map((v, i) => (
-              <div
-                key={i}
-                className="glass-card animated-border"
-                style={{ padding: '24px 20px', textAlign: 'center' }}
-              >
-                <div style={{ fontSize: '1.6rem', color: 'var(--gold)', marginBottom: 12 }}>{v.icon}</div>
-                <div style={{ fontSize: '0.85rem', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '0.04em', marginBottom: 10 }}>{v.label}</div>
-                <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', margin: 0, lineHeight: 1.65 }}>{v.body}</p>
+        <div className="mb-20">
+          <div className="text-center max-w-xl mx-auto mb-12">
+            <span className="text-xs font-black uppercase tracking-widest text-amber-600">
+              GUIDING PRINCIPLES
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-black text-slate-900 mt-2">
+              Our Core Values
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {values.map((v) => (
+              <div key={v.title} className="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 text-center hover:bg-white hover:shadow-lg transition-all">
+                <div className={`w-12 h-12 rounded-2xl mx-auto flex items-center justify-center font-black text-lg mb-4 ${v.color}`}>
+                  {v.icon}
+                </div>
+                <h4 className="text-base font-extrabold text-slate-900 mb-2">
+                  {v.title}
+                </h4>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  {v.desc}
+                </p>
               </div>
             ))}
           </div>
         </div>
 
-        <hr className="razor-line-gold" style={{ marginBottom: 64 }} />
+        {/* Leadership Team Spotlight */}
+        <div className="p-8 sm:p-12 rounded-3xl bg-slate-900 text-white shadow-xl">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
+            <div>
+              <span className="text-xs font-black uppercase tracking-widest text-amber-400">
+                LEADERSHIP &amp; EXPERTISE
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-black mt-2">
+                Multidisciplinary Talent
+              </h3>
+            </div>
+            <p className="text-xs sm:text-sm text-slate-300 max-w-md">
+              Combining senior software engineers, certified network architects, and broadcast media directors under one roof.
+            </p>
+          </div>
 
-        {/* Leadership & Key Roles */}
-        <div style={{ marginBottom: 64 }}>
-          <div className="section-label" style={{ marginBottom: 12 }}>◆ &nbsp; Our Team &amp; Leadership</div>
-          <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-primary)', margin: '0 0 10px', letterSpacing: '-0.01em' }}>
-            Multidisciplinary Technical Talent
-          </h3>
-          <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', marginBottom: 32, maxWidth: 580 }}>
-            Our team blends seasoned software developers, certified network engineers, audiovisual specialists, and visual artists.
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {teamMembers.map((member, i) => (
-              <div
-                key={i}
-                className="glass-card flex flex-col justify-between"
-                style={{ padding: '24px 20px', borderRadius: 12, borderTop: `3px solid ${member.color}` }}
-              >
+              <div key={i} className="p-6 rounded-2xl bg-slate-800/80 border border-slate-700/80 flex flex-col justify-between">
                 <div>
-                  <div style={{
-                    width: 48, height: 48, borderRadius: '50%',
-                    background: `${member.color}20`, color: member.color,
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    fontWeight: 800, fontSize: '0.9rem', marginBottom: 16,
-                  }}>
+                  <div className={`w-12 h-12 rounded-2xl flex items-center justify-center font-black text-sm mb-4 border ${member.accent}`}>
                     {member.avatar}
                   </div>
-                  <div style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: 4 }}>
+
+                  <h4 className="text-lg font-black text-white mb-1">
                     {member.name}
-                  </div>
-                  <div style={{ fontSize: '0.75rem', fontWeight: 600, color: member.color, marginBottom: 2 }}>
+                  </h4>
+                  <div className="text-xs font-bold text-amber-400 mb-1">
                     {member.role}
                   </div>
-                  <div style={{ fontSize: '0.65rem', color: 'var(--text-dim)', marginBottom: 14 }}>
-                    {member.division}
+                  <div className="text-[11px] text-slate-400 font-medium mb-3">
+                    {member.specialty}
                   </div>
-                  <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', lineHeight: 1.65, margin: 0 }}>
+                  <p className="text-xs text-slate-300 leading-relaxed">
                     {member.bio}
                   </p>
                 </div>
@@ -212,18 +249,7 @@ export default function CompanyProfileSection() {
           </div>
         </div>
 
-        <hr className="razor-line-gold" style={{ marginBottom: 64 }} />
-
-        {/* Delivery Pipeline */}
-        <div>
-          <div className="section-label" style={{ marginBottom: 12 }}>◆ &nbsp; Execution Pipeline</div>
-          <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-primary)', margin: '0 0 36px', letterSpacing: '-0.01em' }}>
-            How We Deliver: From Discovery to Deployment
-          </h3>
-          <Timeline />
-        </div>
-
       </div>
-    </div>
+    </section>
   )
 }

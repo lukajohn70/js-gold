@@ -6,18 +6,17 @@ interface PortfolioItem {
   title: string
   category: string
   division: string
-  description: string
-  challenge: string
+  image: string
+  headline: string
   solution: string
   technologies: string[]
   metrics: string
-  accent: string
+  badgeColor: string
 }
 
 const filterCategories = [
   'All',
-  'Software & Web',
-  'Mobile Apps',
+  'Software & Apps',
   'Network Deployments',
   'Broadcast & Live',
   'Creative Media',
@@ -26,75 +25,75 @@ const filterCategories = [
 const portfolioItems: PortfolioItem[] = [
   {
     id: 'campus-network',
-    title: 'Enterprise Campus Wi-Fi & Hotspot Infrastructure',
+    title: 'Multi-Building Campus Wi-Fi & Core Routing',
     category: 'Network Deployments',
     division: 'Software & Networking',
-    description: 'Turnkey campus network overhaul supporting 5,000+ simultaneous student and faculty devices with bandwidth management.',
-    challenge: 'Fragmented legacy routers, unmanaged bandwidth hogs, and inconsistent coverage across multi-building grounds.',
-    solution: 'Engineered a MikroTik core routing topology with captive portal user authentication, dynamic traffic shaping, and VLAN isolation.',
-    technologies: ['MikroTik RouterOS', 'VLAN Segmentation', 'User-Manager', 'QoS Shaping', 'Fibre Uplinks'],
-    metrics: '99.8% Network Uptime · 65% Bandwidth Efficiency Gain',
-    accent: '#50C8FF',
-  },
-  {
-    id: 'enterprise-erp',
-    title: 'Institutional Operations & Portal System',
-    category: 'Software & Web',
-    division: 'Software & Networking',
-    description: 'Centralized web portal and workflow automation platform for institutional administration, record management, and secure payments.',
-    challenge: 'Disjointed paper-driven departmental operations causing multi-day delays and accounting discrepancies.',
-    solution: 'Designed and deployed a responsive Laravel web platform with modular access control, encrypted audits, and instant billing verification.',
-    technologies: ['Laravel', 'React', 'MySQL', 'RESTful APIs', 'Tailwind CSS'],
-    metrics: '4,000+ Daily Active Users · 75% Faster Processing',
-    accent: '#D4AF37',
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&auto=format&fit=crop&q=80',
+    headline: 'High-density hotspot routing across 14 campus blocks supporting 6,000+ simultaneous devices.',
+    solution: 'Engineered MikroTik core routing with captive portal User-Manager authentication, dynamic QoS bandwidth traffic shaping, and redundant fiber links.',
+    technologies: ['MikroTik RouterOS', 'VLAN Segmentation', 'User-Manager', 'QoS Queue Trees', 'Fibre Backhaul'],
+    metrics: '99.8% Network Uptime • 65% Bandwidth Waste Reduction',
+    badgeColor: 'bg-blue-100 text-blue-800 border-blue-200',
   },
   {
     id: 'hybrid-convocation-stream',
-    title: 'Major Convocation & Multi-Camera Broadcast',
+    title: 'National Convocation Multi-Camera Live Broadcast',
     category: 'Broadcast & Live',
     division: 'Broadcast & AV Systems',
-    description: 'Four-hour live multi-camera broadcast streamed concurrently to physical venue overflow displays and global online audiences.',
-    challenge: 'High-stakes live environment requiring zero dropouts, synchronized director switching, and crystal-clear sound reproduction.',
-    solution: 'Configured a 6-camera vMix production rig with hardware encoding, digital audio console routing, and bonded failover streaming pipelines.',
-    technologies: ['vMix', 'Blackmagic Design', 'Dante Audio', 'SRT / RTMP', 'Hardware Encoders'],
-    metrics: '15,000+ Concurrent Viewers · 0% Stream Latency Lag',
-    accent: '#A78BFA',
+    image: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&auto=format&fit=crop&q=80',
+    headline: 'Four-hour zero-dropout live stream broadcast simultaneously to physical overflow auditoriums and 15,000+ remote viewers.',
+    solution: 'Configured 6-camera vMix production rig with hardware encoding, Dante digital audio routing, and bonded dual-WAN failover internet links.',
+    technologies: ['vMix 4K Pro', 'Hardware Encoders', 'Dante AoIP', 'SRT / RTMP', 'Blackmagic ATEM'],
+    metrics: '15,400 Concurrent Viewers • 0 Dropped Frames',
+    badgeColor: 'bg-amber-100 text-amber-800 border-amber-200',
+  },
+  {
+    id: 'enterprise-erp',
+    title: 'Institutional Operations & Portal Ecosystem',
+    category: 'Software & Apps',
+    division: 'Software & Networking',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80',
+    headline: 'Centralized administrative web portal, automated billing verification, and encrypted student records system.',
+    solution: 'Engineered modular Laravel application with role-based access control, responsive dashboards, and real-time payment reconciliation APIs.',
+    technologies: ['Laravel 11', 'React', 'MySQL', 'REST API', 'Tailwind CSS'],
+    metrics: '4,500+ Daily Active Users • 75% Faster Processing',
+    badgeColor: 'bg-blue-100 text-blue-800 border-blue-200',
+  },
+  {
+    id: 'brand-film-campaign',
+    title: 'Cinematic Corporate Brand Film & Visual System',
+    category: 'Creative Media',
+    division: 'Creative Media',
+    image: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&auto=format&fit=crop&q=80',
+    headline: 'Flagship documentary capturing enterprise operational milestones, accompanied by comprehensive visual branding guidelines.',
+    solution: 'Shot on 4K cinema camera packages with drone aerials, color graded in DaVinci Resolve, complemented by custom sound design and motion intros.',
+    technologies: ['4K Cinematography', 'DaVinci Resolve', 'After Effects', 'Figma', 'Sound Mastering'],
+    metrics: 'Over 650,000 Digital Impressions • Aired Nationally',
+    badgeColor: 'bg-purple-100 text-purple-800 border-purple-200',
   },
   {
     id: 'fintech-mobile-app',
     title: 'Cross-Platform Financial Services Mobile App',
-    category: 'Mobile Apps',
+    category: 'Software & Apps',
     division: 'Software & Networking',
-    description: 'Consumer and agent mobile application featuring biometric login, instant transaction routing, and offline transaction caching.',
-    challenge: 'Need for high reliability in low-bandwidth network environments across varied Android and iOS device tiers.',
-    solution: 'Engineered an offline-first Flutter application coupled to an API gateway with end-to-end payload encryption and intuitive UX.',
-    technologies: ['Flutter', 'Dart', 'State Management', 'REST API', 'Figma UI/UX'],
-    metrics: '4.8★ App Store Rating · Sub-second Transaction Speed',
-    accent: '#50C8FF',
-  },
-  {
-    id: 'brand-film-campaign',
-    title: 'Corporate Brand Film & Media Identity',
-    category: 'Creative Media',
-    division: 'Creative Media',
-    description: 'Cinematic corporate documentary highlighting operational milestones, coupled with a comprehensive digital visual identity package.',
-    challenge: 'Communicating a complex technical vision in an engaging, cinematic manner for prospective international partners.',
-    solution: 'Filmed on 4K cinema cameras with aerial cinematography, graded in DaVinci Resolve, complemented by motion graphics and custom sound design.',
-    technologies: ['4K Cinematography', 'DaVinci Resolve', 'After Effects', 'Figma', 'Sound Mastering'],
-    metrics: 'Over 500,000 Digital Views · Aired Nationally',
-    accent: '#34D399',
+    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&auto=format&fit=crop&q=80',
+    headline: 'Biometric consumer and merchant mobile application with offline transaction caching for unstable network zones.',
+    solution: 'Built with React Native & Flutter for high performance across Android and iOS devices, communicating via encrypted payloads to an API gateway.',
+    technologies: ['React Native', 'Flutter', 'Dart', 'REST API', 'Figma UI/UX'],
+    metrics: '4.8★ App Store Rating • Sub-second Transaction Times',
+    badgeColor: 'bg-blue-100 text-blue-800 border-blue-200',
   },
   {
     id: 'audio-production-suite',
-    title: 'Commercial Audio Production & Station Sound',
+    title: 'Commercial Musical Jingles & Station Identity',
     category: 'Creative Media',
     division: 'Broadcast & AV Systems',
-    description: 'Custom musical branding, station jingles, and pristine voiceover mastering for broadcast and corporate marketing campaigns.',
-    challenge: 'Crafting a memorable acoustic signature meeting broadcast loudness standards (LUFS) across multiple distribution mediums.',
-    solution: 'Composed, tracked, and mastered full musical compositions, radio IDs, and podcast series using digital audio workstations.',
-    technologies: ['Pro Tools / DAW', 'Digital Master EQ', 'Sound Design', 'Voiceover Suite'],
-    metrics: 'Broadcast EBU R128 Compliant · 10+ Radio Jingles Produced',
-    accent: '#A78BFA',
+    image: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=800&auto=format&fit=crop&q=80',
+    headline: 'Custom acoustic branding, radio signatures, and voiceover audio mastering for regional marketing campaigns.',
+    solution: 'Composed, recorded, and mixed original musical anthems meeting international broadcast loudness standards (EBU R128).',
+    technologies: ['DAW Pro Tools', 'Mastering EQ', 'Voiceover Suite', 'Foley Sound'],
+    metrics: 'EBU R128 Broadcast Compliant • 12 Jingles Produced',
+    badgeColor: 'bg-emerald-100 text-emerald-800 border-emerald-200',
   },
 ]
 
@@ -106,153 +105,137 @@ export default function PortfolioSection() {
     : portfolioItems.filter((item) => item.category === activeFilter)
 
   return (
-    <div className="section-fade px-4 sm:px-6 md:px-8 py-20" style={{ maxWidth: 1280, margin: '0 auto' }}>
-      <hr className="razor-line" style={{ marginBottom: 64 }} />
+    <section id="portfolio" className="py-20 md:py-28 bg-slate-50/60 border-b border-slate-200/80">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      {/* Section Header */}
-      <div className="text-center max-w-2xl mx-auto mb-12">
-        <div className="section-label" style={{ marginBottom: 12 }}>◆ &nbsp; Featured Work &amp; Case Studies</div>
-        <h2 style={{ fontSize: 'clamp(2rem, 3vw, 2.8rem)', fontWeight: 800, letterSpacing: '-0.025em', color: 'var(--text-primary)', margin: '0 0 16px', lineHeight: 1.2 }}>
-          Proven Outcomes Across{' '}
-          <span style={{
-            background: 'linear-gradient(135deg, var(--gold), var(--gold-light))',
-            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
-          }}>
-            Every Division
-          </span>
-        </h2>
-        <p style={{ fontSize: '0.92rem', color: 'var(--text-muted)', lineHeight: 1.7, margin: 0 }}>
-          Explore how our engineering precision, audiovisual know-how, and creative media craftsmanship solve real-world operational challenges.
-        </p>
-      </div>
-
-      {/* Filter Chips */}
-      <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
-        {filterCategories.map((cat) => {
-          const isActive = activeFilter === cat
-          return (
-            <button
-              key={cat}
-              onClick={() => setActiveFilter(cat)}
-              className="px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer"
-              style={{
-                background: isActive ? 'var(--gold)' : 'var(--bg-card)',
-                color: isActive ? '#000000' : 'var(--text-muted)',
-                border: isActive ? '1px solid var(--gold)' : '1px solid var(--border-subtle)',
-                boxShadow: isActive ? '0 0 12px var(--gold-glow)' : 'none',
-              }}
-            >
-              {cat}
-            </button>
-          )
-        })}
-      </div>
-
-      {/* Portfolio Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-        {filteredItems.map((item) => (
-          <div
-            key={item.id}
-            className="glass-card flex flex-col justify-between"
-            style={{
-              padding: '28px 24px',
-              borderRadius: 14,
-              borderTop: `3px solid ${item.accent}`,
-            }}
-          >
-            <div>
-              <div className="flex items-center justify-between mb-4">
-                <span
-                  style={{
-                    fontSize: '0.65rem',
-                    fontWeight: 700,
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.08em',
-                    color: item.accent,
-                    background: `${item.accent}14`,
-                    padding: '3px 8px',
-                    borderRadius: 4,
-                  }}
-                >
-                  {item.division}
-                </span>
-                <span style={{ fontSize: '0.72rem', color: 'var(--text-dim)', fontWeight: 600 }}>
-                  {item.category}
-                </span>
-              </div>
-
-              <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: 12, lineHeight: 1.35 }}>
-                {item.title}
-              </h3>
-
-              <p style={{ fontSize: '0.84rem', color: 'var(--text-muted)', lineHeight: 1.65, marginBottom: 16 }}>
-                {item.description}
-              </p>
-
-              <div className="p-3 rounded-lg mb-4 space-y-2" style={{ background: 'var(--bg-surface)', border: '1px solid var(--border-subtle)' }}>
-                <div style={{ fontSize: '0.74rem', color: 'var(--text-primary)', lineHeight: 1.5 }}>
-                  <strong style={{ color: item.accent }}>Challenge:</strong> {item.challenge}
-                </div>
-                <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', lineHeight: 1.5 }}>
-                  <strong style={{ color: 'var(--text-primary)' }}>Solution:</strong> {item.solution}
-                </div>
-              </div>
-
-              {/* Technologies */}
-              <div className="flex flex-wrap gap-1.5 mb-6">
-                {item.technologies.map((tech) => (
-                  <span
-                    key={tech}
-                    style={{
-                      fontSize: '0.68rem',
-                      fontWeight: 600,
-                      padding: '2px 7px',
-                      borderRadius: 4,
-                      background: 'var(--bg-surface)',
-                      color: 'var(--text-dim)',
-                      border: '1px solid var(--border-subtle)',
-                    }}
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+          <div>
+            <div className="section-label mb-3">
+              <span>◆</span>
+              <span>VERIFIED CASE STUDIES</span>
             </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-slate-900">
+              Featured Outcomes
+            </h2>
+            <p className="text-base text-slate-600 max-w-xl mt-3 leading-relaxed">
+              Explore how our engineering precision and creative media craftsmanship solve complex operational challenges in the field.
+            </p>
+          </div>
 
-            {/* Impact Metric & Footer */}
-            <div className="pt-4 border-t border-[var(--border-subtle)] flex items-center justify-between">
+          {/* Filter Chips (Brandstore Style) */}
+          <div className="flex flex-wrap items-center gap-2 self-start md:self-auto">
+            {filterCategories.map((cat) => {
+              const isActive = activeFilter === cat
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setActiveFilter(cat)}
+                  className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                    isActive
+                      ? 'bg-slate-900 text-white shadow-md'
+                      : 'bg-white text-slate-600 border border-slate-200 hover:border-slate-300 hover:text-slate-900'
+                  }`}
+                >
+                  {cat}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+
+        {/* Portfolio Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {filteredItems.map((item) => (
+            <div
+              key={item.id}
+              className="pro-card group overflow-hidden flex flex-col justify-between bg-white"
+            >
               <div>
-                <div style={{ fontSize: '0.65rem', textTransform: 'uppercase', color: 'var(--text-dim)', letterSpacing: '0.05em' }}>Key Result</div>
-                <div style={{ fontSize: '0.76rem', fontWeight: 700, color: item.accent }}>
+                {/* Photo Thumbnail */}
+                <div className="relative h-52 overflow-hidden bg-slate-900">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none'
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
+
+                  <div className="absolute top-4 left-4">
+                    <span className={`text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full border shadow-sm ${item.badgeColor}`}>
+                      {item.category}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Card Content */}
+                <div className="p-6">
+                  <h3 className="text-lg font-extrabold text-slate-900 mb-2 group-hover:text-amber-600 transition-colors leading-snug">
+                    {item.title}
+                  </h3>
+
+                  <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                    {item.headline}
+                  </p>
+
+                  <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-100 text-xs text-slate-700 leading-relaxed mb-5">
+                    <strong className="text-slate-900">Delivered: </strong>
+                    {item.solution}
+                  </div>
+
+                  {/* Technology Pills */}
+                  <div className="flex flex-wrap gap-1.5 mb-2">
+                    {item.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="text-[10px] font-medium px-2 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Outcome Banner */}
+              <div className="p-4 px-6 bg-slate-50 border-t border-slate-100">
+                <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                  Measured Outcome
+                </div>
+                <div className="text-xs font-black text-emerald-600 mt-0.5">
                   {item.metrics}
                 </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Bottom CTA Banner */}
-      <div
-        className="glass-card p-8 md:p-10 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6"
-        style={{ border: '1px solid var(--border-gold)', background: 'var(--bg-card)' }}
-      >
-        <div>
-          <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: 6 }}>
-            Have a project in mind for our engineering or creative teams?
-          </h3>
-          <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', margin: 0 }}>
-            We provide free initial technical assessments and clear scopes of work.
-          </p>
+          ))}
         </div>
-        <button
-          onClick={() => scrollTo('contact')}
-          className="gold-glow-btn flex-shrink-0"
-          style={{ padding: '12px 28px', borderRadius: 8, fontSize: '0.82rem', border: 'none', cursor: 'pointer', fontFamily: 'inherit' }}
-        >
-          Request Technical Assessment →
-        </button>
+
+        {/* CTA Banner (Brandstore Summer Offer Style) */}
+        <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-8">
+          <div>
+            <span className="text-xs font-extrabold uppercase tracking-widest text-amber-400">
+              FREE TECHNICAL ASSESSMENT
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-black mt-2 leading-tight">
+              Have a Project in Mind?
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-300 mt-2 max-w-lg">
+              We review your existing infrastructure, application requirements, or broadcast timelines with zero obligation.
+            </p>
+          </div>
+
+          <button
+            onClick={() => scrollTo('contact')}
+            className="bg-gradient-to-r from-amber-500 to-amber-600 text-white px-8 py-4 rounded-xl text-sm font-bold shadow-lg shadow-amber-500/30 hover:scale-105 transition-all cursor-pointer whitespace-nowrap"
+          >
+            Request Free Assessment →
+          </button>
+        </div>
+
       </div>
-    </div>
+    </section>
   )
 }
