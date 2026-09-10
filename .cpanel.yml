@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/gwylvxeo/jsgold.org/
-    - /bin/rsync -rav --exclude='.git*' ./dist/ $DEPLOYPATH
+    - export DEPLOYPATH=/home/gwylvxeo/jsgold.org
+    - cp -R dist/* $DEPLOYPATH
